@@ -525,6 +525,31 @@ body.eval-mode .container {
   font-size: 12px;
 }
 
+/* 可点列：整格/表头数字区可点，减轻瞄准小圆钮的负担 */
+.question-table thead tr:first-child th:not(:first-child) {
+  cursor: pointer;
+  user-select: none;
+  padding: 12px 10px 10px;
+  min-height: 48px;
+  transition: background 0.15s ease;
+}
+
+.question-table thead tr:first-child th:not(:first-child):hover {
+  background: #e2e8f0;
+}
+
+.question-table tbody td:not(:first-child) {
+  cursor: pointer;
+  min-width: 52px;
+  min-height: 48px;
+  padding: 14px 10px;
+  transition: background 0.12s ease;
+}
+
+.question-table tbody tr td:not(:first-child):hover {
+  background: #e8f4f2;
+}
+
 .question-table td:first-child,
 .question-table th:first-child {
   text-align: left;
@@ -538,7 +563,10 @@ body.eval-mode .container {
   margin: 0 auto;
   display: block;
   accent-color: var(--accent);
-  transform: scale(1.05);
+  transform: scale(1.2);
+  width: 1.1rem;
+  height: 1.1rem;
+  cursor: pointer;
 }
 
 .question-table tbody tr:hover td {

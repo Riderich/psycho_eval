@@ -12,7 +12,7 @@
   <div id="startScreen" class="start-screen">
     <div class="start-container">
       <h1>👋 欢迎参与心理健康支持对话评估</h1>
-      <p class="tagline">AgeMindBench · Supporter 对话质量标注（开始页阅读指引，进入后仍有本组指南）</p>
+      <p class="tagline">Supporter 对话质量标注（开始页阅读指引，进入后仍有本组指南）</p>
       <!-- 用户代号输入区域 -->
       <div class="user-id-container">
         <h2>🔑 用户标识</h2>
@@ -645,7 +645,58 @@
     let dialogueGroups = [];
     let sortedGroupIds = [];
 
+    /**
+     * 量表格：点击 1–5 整格或表头数字列即可选中（减轻点小圆圈的负担）
+     */
+    function initQuestionTableClickTargets() {
+      document.addEventListener("click", function(e) {
+        const table = e.target.closest("table.question-table");
+        if (!table) return;
+
+        if (e.target.tagName === "INPUT" && e.target.getAttribute("type") === "radio") {
+          return;
+        }
+
+        const td = e.target.closest("tbody td");
+        if (td && table.contains(td)) {
+          const tds = Array.prototype.slice.call(td.parentNode.children);
+          var colIndex = tds.indexOf(td);
+          if (colIndex <= 0) return;
+          var radio = td.querySelector('input[type="radio"]');
+          if (radio) {
+            radio.checked = true;
+            radio.dispatchEvent(new Event("change", { bubbles: true }));
+            e.preventDefault();
+          }
+          return;
+        }
+
+        var th = e.target.closest("thead th");
+        if (th && table.contains(th)) {
+          var headRow = th.parentNode;
+          var ths = Array.prototype.slice.call(headRow.children);
+          colIndex = ths.indexOf(th);
+          if (colIndex <= 0) return;
+          var tbody = table.querySelector("tbody");
+          if (!tbody) return;
+          var rows = tbody.querySelectorAll("tr");
+          for (var r = 0; r < rows.length; r += 1) {
+            var row = rows[r];
+            var targetTd = row.children[colIndex];
+            if (!targetTd) continue;
+            radio = targetTd.querySelector('input[type="radio"]');
+            if (radio) {
+              radio.checked = true;
+              radio.dispatchEvent(new Event("change", { bubbles: true }));
+            }
+          }
+          e.preventDefault();
+        }
+      });
+    }
+
     document.addEventListener("DOMContentLoaded", function() {
+      initQuestionTableClickTargets();
       document.getElementById("startScreen").classList.remove("hidden");
       document.getElementById("responseMessage").classList.add("hidden");
       document.getElementById("evaluationContainer").classList.add("hidden");
