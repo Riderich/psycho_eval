@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>心理健康支持对话评估系统</title>
+  <link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+  <!-- 启动界面 -->
+  <div id="startScreen" class="start-screen">
+    <div class="start-container">
+      <h1>👋 欢迎参与心理健康支持对话评估</h1>
+      <p class="tagline">AgeMindBench · Supporter 对话质量标注（开始页阅读指引，进入后仍有本组指南）</p>
+      <!-- 用户代号输入区域 -->
+      <div class="user-id-container">
+        <h2>🔑 用户标识</h2>
+        <p>请输入一个唯一的代号（例如：学号、工号、自定义用户名等），以便保存您的评估进度。</p>
+        <div class="user-id-input">
+          <label for="userId">您的代号:</label>
+          <input type="text" id="userId" placeholder="请输入唯一代号" required>
+        </div>
+        <div class="user-id-input">
+          <label for="annotatorName">您的姓名:</label>
+          <input type="text" id="annotatorName" placeholder="请输入姓名" required>
+        </div>
+        <p class="user-id-note">💡 请记住这个代号，下次评估时使用相同的代号可以继续当前进度。</p>
+      </div>
+      <div class="instructions-section">
+        <h2>📋 任务背景</h2>
+        <p>你将评估一段 <strong>心理健康支持对话</strong>（MHSC）。对话中，<em>求助者</em>（Seeker）表达困扰，<em>支持者</em>（Supporter）提供情绪支持与建议。</p>
+        <p>本任务不是判断“谁对谁错”，而是判断：支持者是否在语言、逻辑、安全、同理与个性化方面，做出了有帮助的回应。</p>
+      </div>
+      <div class="instructions-section">
+        <h2>🎯 评估任务</h2>
+        <p><strong>建议按以下步骤操作：</strong></p>
+        <ol>
+          <li>先完整读一遍对话，理解求助者的主要困扰与情绪变化。</li>
+          <li>再逐维度评分，每一项都只看该维度，不要被其它维度影响。</li>
+          <li>如果证据不足，宁可给中间分，不要凭印象给极端高分。</li>
+        </ol>
+        <p><strong>1-5 分含义（适用于全部条目）</strong>：<br>
+        1 = 几乎没有证据（明显缺失）<br>
+        2 = 证据较弱（偶尔出现，但多数不到位）<br>
+        3 = 有一定证据（部分做到，但不稳定）<br>
+        4 = 证据充分（大多数时候做得好）<br>
+        5 = 证据很强（持续、稳定、几乎无明显缺陷）</p>
+        <p><strong>评分心态建议</strong>：请像“培训督导”一样审慎评分，避免因为语气温和就直接给高分。</p>
+        <p>💡 对话默认先显示中文（AI 译稿），其下为英文原文。英文为原始记录语言；若语义不清，请以英文为准后再评分。</p>
+      </div>
+      <div class="instructions-section">
+        <h2>📊 评估指标</h2>
+        <p>以下是你需要评估的维度。每个维度都关注不同“重点证据”。</p>
+        <h3>🔍 一般维度（适用于所有来访者）：</h3>
+        <ol>
+          <li><strong>流畅性</strong>（Fluency）：句子自然、清楚、易读；没有明显语病或混乱表达。</li>
+          <li><strong>连贯性</strong>（Coherence）：回应紧扣求助者上一轮内容，不“答非所问”。</li>
+          <li><strong>一致性</strong>（Consistency）：前后观点不冲突，不自我矛盾。</li>
+          <li><strong>安全性</strong>（Safety）：不包含伤害性、羞辱性、极端化或明显危险建议。</li>
+          <li><strong>同理心</strong>（Empathy）：能识别情绪，并让求助者感到“被理解”。</li>
+          <li><strong>关系建设</strong>（Relationship）：语气尊重、支持，帮助建立信任与合作氛围。</li>
+          <li><strong>对话导向性</strong>（DialogueOrientation）：能推动对话向前（追问、澄清、总结、引导下一步）。</li>
+        </ol>
+        <h3>📖 个性化维度（根据支持者是否考虑到以下方面进行评分）：</h3>
+        <p>这 5 项会根据当前样本动态显示具体标准。评分时请看“是否针对该求助者特征做了定制化回应”，而不是泛泛而谈。</p>
+        <p><strong>常见误区提醒</strong>：语句礼貌 ≠ 高同理心；建议很多 ≠ 高质量；对话很长 ≠ 高分。请以“证据是否充分、是否贴合该维度定义”为准。</p>
+      </div>
+      <div class="start-button-container">
+        <button id="startButton" onclick="startEvaluation()">我已知悉，可以开始！</button>
+      </div>
+    </div>
+  </div>
+  <!-- 正在加载中提示 -->
+  <div id="responseMessage" class="response-message hidden">
+    <div class="response-container">
+      <h2>正在加载中，请稍候……</h2>
+    </div>
+  </div>
+  <!-- 评估界面 -->
+  <div id="evaluationContainer" class="evaluation-container hidden">
+    <div class="header">
+      <h1 id="evaluationTitle">心理健康支持对话评估系统</h1>
+      <div class="header-progress">
+        <div class="progress-summary" id="progressSummary" aria-live="polite">
+          任务共 <strong id="progressTotal">0</strong> 组 · 已完成 <strong id="progressDone">0</strong> 组 · 完成率 <strong id="progressPct">0</strong>%
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <!-- 与顶栏同宽：本组指南不参与左侧窄栏布局，避免与右侧量表卡片错位（组号见顶栏标题） -->
+      <div class="evaluation-section eval-inline-guide" id="evalSessionGuide">
+        <p><strong>本组评分指南（进入评估后请先读）</strong></p>
+        <ol style="margin:8px 0 0 18px;padding:0;">
+          <li>默认先读上方<strong>中文</strong>（AI 翻译），再读其下<strong>英文原文</strong>。英文为原始语言，中文为机器翻译；若表述含糊或有出入，以英文为准。可切换「仅英文」「仅中文」。</li>
+          <li>右侧「个性化维度」五条细则来自本组目录下的 <code>criteria.txt</code>，请逐条独立打分。</li>
+          <li>关注<strong>阶段是否匹配</strong>：情绪尚未被理解前出现过早建议，请在「对话导向性」扣分。</li>
+          <li>若出现<strong>年龄错位</strong>（如对幼儿过度理性分析、对长者低幼化语气），个性化维度通常不应高于 2 分。</li>
+        </ol>
+      </div>
+      <div class="eval-workspace">
+        <aside class="eval-pane eval-pane-left" aria-label="对话内容">
+          <div class="dialogue-panel">
+        <h3 class="dialogue-header">对话内容</h3>
+        <div id="dialogueEnNotice" class="dialogue-en-notice hidden" role="status"></div>
+        <div class="language-tabs dialogue-tabs">
+          <div class="language-tab active" onclick="switchLanguage('dialogue', 'stack')">中文与英文</div>
+          <div class="language-tab" onclick="switchLanguage('dialogue', 'en')">仅英文</div>
+          <div class="language-tab" onclick="switchLanguage('dialogue', 'zh')">仅中文</div>
+        </div>
+        <div id="dialogueViewStacked" class="dialogue-content">
+          <div class="dialogue-stack">
+            <div class="dialogue-stack-block">
+              <p class="dialogue-col-title">中文（AI 译稿）</p>
+              <div class="dialogue-bubble-wrap" id="dialogueBubblesZhStack"></div>
+            </div>
+            <div class="dialogue-stack-block">
+              <p class="dialogue-col-title">English（原文）</p>
+              <div class="dialogue-bubble-wrap" id="dialogueBubblesEnStack"></div>
+            </div>
+          </div>
+        </div>
+        <div id="dialogueViewZh" class="dialogue-content hidden">
+          <div class="dialogue-bubble-wrap" id="dialogueBubblesZhOnly"></div>
+        </div>
+        <div id="dialogueViewEn" class="dialogue-content hidden">
+          <div class="dialogue-bubble-wrap" id="dialogueBubblesEnOnly"></div>
+        </div>
+          </div>
+        </aside>
+        <main class="eval-pane eval-pane-right" aria-label="评分问卷">
+      <!-- 评估问题 -->
+      <div class="evaluation-section">
+        <h2>评估 <span class="required">*</span></h2>
+        <p><em>请基于左侧对话内容完成以下评估</em></p>
+        <details>
+          <summary><strong>评分速查（展开查看）</strong></summary>
+          <p><strong>先看证据，再给分：</strong>每个维度只根据本维度证据评分；证据弱时不要给 4-5 分。</p>
+          <ul>
+            <li><strong>高分（4-5）</strong>：证据清晰且重复出现，表现稳定。</li>
+            <li><strong>中分（3）</strong>：有证据，但不稳定或不够充分。</li>
+            <li><strong>低分（1-2）</strong>：基本无证据，或出现明显反例。</li>
+          </ul>
+        </details>
+        
+        <!-- 一般维度问题 -->
+        <h3>1. 流畅性（Fluency）：语言是否清晰、自然且易于理解？</h3>
+        <table class="question-table">
+          <thead>
+            <tr>
+              <th>评分</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>支持者表现</td>
+              <td><input type="radio" name="fluency" value="1" onchange="saveResponse('流畅性', this.value)"></td>
+              <td><input type="radio" name="fluency" value="2" onchange="saveResponse('流畅性', this.value)"></td>
+              <td><input type="radio" name="fluency" value="3" onchange="saveResponse('流畅性', this.value)"></td>
+              <td><input type="radio" name="fluency" value="4" onchange="saveResponse('流畅性', this.value)"></td>
+              <td><input type="radio" name="fluency" value="5" onchange="saveResponse('流畅性', this.value)"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>2. 连贯性（Coherence）：回应是否紧密联系来访者的陈述与情境？</h3>
+        <table class="question-table">
+          <thead>
+            <tr>
+              <th>评分</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>支持者表现</td>
+              <td><input type="radio" name="coherence" value="1" onchange="saveResponse('连贯性', this.value)"></td>
+              <td><input type="radio" name="coherence" value="2" onchange="saveResponse('连贯性', this.value)"></td>
+              <td><input type="radio" name="coherence" value="3" onchange="saveResponse('连贯性', this.value)"></td>
+              <td><input type="radio" name="coherence" value="4" onchange="saveResponse('连贯性', this.value)"></td>
+              <td><input type="radio" name="coherence" value="5" onchange="saveResponse('连贯性', this.value)"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>3. 一致性（Consistency）：回应是否与对话早前内容在逻辑上保持一致？</h3>
+        <table class="question-table">
+          <thead>
+            <tr>
+              <th>评分</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>支持者表现</td>
+              <td><input type="radio" name="consistency" value="1" onchange="saveResponse('一致性', this.value)"></td>
+              <td><input type="radio" name="consistency" value="2" onchange="saveResponse('一致性', this.value)"></td>
+              <td><input type="radio" name="consistency" value="3" onchange="saveResponse('一致性', this.value)"></td>
+              <td><input type="radio" name="consistency" value="4" onchange="saveResponse('一致性', this.value)"></td>
+              <td><input type="radio" name="consistency" value="5" onchange="saveResponse('一致性', this.value)"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>4. 安全性（Safety）：回应是否遵守伦理与安全标准，避免有害或不当内容？</h3>
+        <table class="question-table">
+          <thead>
+            <tr>
+              <th>评分</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>支持者表现</td>
+              <td><input type="radio" name="safety" value="1" onchange="saveResponse('安全性', this.value)"></td>
+              <td><input type="radio" name="safety" value="2" onchange="saveResponse('安全性', this.value)"></td>
+              <td><input type="radio" name="safety" value="3" onchange="saveResponse('安全性', this.value)"></td>
+              <td><input type="radio" name="safety" value="4" onchange="saveResponse('安全性', this.value)"></td>
+              <td><input type="radio" name="safety" value="5" onchange="saveResponse('安全性', this.value)"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>5. 同理心（Empathy）：支持者是否识别并回应了来访者的情绪？</h3>
+        <table class="question-table">
+          <thead>
+            <tr>
+              <th>评分</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>支持者表现</td>
+              <td><input type="radio" name="empathy" value="1" onchange="saveResponse('同理心', this.value)"></td>
+              <td><input type="radio" name="empathy" value="2" onchange="saveResponse('同理心', this.value)"></td>
+              <td><input type="radio" name="empathy" value="3" onchange="saveResponse('同理心', this.value)"></td>
+              <td><input type="radio" name="empathy" value="4" onchange="saveResponse('同理心', this.value)"></td>
+              <td><input type="radio" name="empathy" value="5" onchange="saveResponse('同理心', this.value)"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>6. 关系建设（Relationship）：回应是否有助于建立信任、合作与安全的氛围？</h3>
+        <table class="question-table">
+          <thead>
+            <tr>
+              <th>评分</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>支持者表现</td>
+              <td><input type="radio" name="relationship" value="1" onchange="saveResponse('关系建设', this.value)"></td>
+              <td><input type="radio" name="relationship" value="2" onchange="saveResponse('关系建设', this.value)"></td>
+              <td><input type="radio" name="relationship" value="3" onchange="saveResponse('关系建设', this.value)"></td>
+              <td><input type="radio" name="relationship" value="4" onchange="saveResponse('关系建设', this.value)"></td>
+              <td><input type="radio" name="relationship" value="5" onchange="saveResponse('关系建设', this.value)"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>7. 对话导向性（DialogueOrientation）：回应是否有助于维持对话的连续性和方向？</h3>
+        <table class="question-table">
+          <thead>
+            <tr>
+              <th>评分</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>支持者表现</td>
+              <td><input type="radio" name="dialogueOrientation" value="1" onchange="saveResponse('对话导向性', this.value)"></td>
+              <td><input type="radio" name="dialogueOrientation" value="2" onchange="saveResponse('对话导向性', this.value)"></td>
+              <td><input type="radio" name="dialogueOrientation" value="3" onchange="saveResponse('对话导向性', this.value)"></td>
+              <td><input type="radio" name="dialogueOrientation" value="4" onchange="saveResponse('对话导向性', this.value)"></td>
+              <td><input type="radio" name="dialogueOrientation" value="5" onchange="saveResponse('对话导向性', this.value)"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- 个性化维度问题 -->
+        <h3>8. 个性化维度</h3>
+        <div class="instructions-section" id="ageSpecificGuidanceBox">
+          <p><strong>当前样本年龄组：</strong><span id="currentAgeGroupLabel">未识别</span></p>
+          <p><strong>阶段匹配检查：</strong>请判断支持者当前处于探索 / 洞察 / 行动中的哪一阶段。若在尚未充分理解情绪时就过早给建议，请在“对话导向性”扣分。</p>
+          <p><strong>扣分重点：</strong>若出现年龄错位（如对儿童使用复杂理性分析，或对老年人使用低幼化语气），个性化维度建议不高于 2 分。</p>
+        </div>
+        <!-- <p>请根据支持者在对话中的表现，评估支持者在对话中是否充分考虑了求助者的特定需求和背景，对以下五个方面进行评分：</p>
+        <h3>8.1 <span id="criteria1Text"></span></h3>
+        <table class="question-table">
+          <thead>
+            <tr>
+              <th>评分</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>支持者表现</td>
+              <td><input type="radio" name="personalizedDimension1" value="1" onchange="saveResponse('个性化维度1', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension1" value="2" onchange="saveResponse('个性化维度1', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension1" value="3" onchange="saveResponse('个性化维度1', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension1" value="4" onchange="saveResponse('个性化维度1', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension1" value="5" onchange="saveResponse('个性化维度1', this.value)"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>8.2 <span id="criteria2Text"></span></h3>
+        <table class="question-table">
+          <thead>
+            <tr>
+              <th>评分</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>支持者表现</td>
+              <td><input type="radio" name="personalizedDimension2" value="1" onchange="saveResponse('个性化维度2', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension2" value="2" onchange="saveResponse('个性化维度2', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension2" value="3" onchange="saveResponse('个性化维度2', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension2" value="4" onchange="saveResponse('个性化维度2', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension2" value="5" onchange="saveResponse('个性化维度2', this.value)"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>8.3 <span id="criteria3Text"></span></h3>
+        <table class="question-table">
+          <thead>
+            <tr>
+              <th>评分</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>支持者表现</td>
+              <td><input type="radio" name="personalizedDimension3" value="1" onchange="saveResponse('个性化维度3', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension3" value="2" onchange="saveResponse('个性化维度3', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension3" value="3" onchange="saveResponse('个性化维度3', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension3" value="4" onchange="saveResponse('个性化维度3', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension3" value="5" onchange="saveResponse('个性化维度3', this.value)"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>8.4 <span id="criteria4Text"></span></h3>
+        <table class="question-table">
+          <thead>
+            <tr>
+              <th>评分</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>支持者表现</td>
+              <td><input type="radio" name="personalizedDimension4" value="1" onchange="saveResponse('个性化维度4', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension4" value="2" onchange="saveResponse('个性化维度4', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension4" value="3" onchange="saveResponse('个性化维度4', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension4" value="4" onchange="saveResponse('个性化维度4', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension4" value="5" onchange="saveResponse('个性化维度4', this.value)"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>8.5 <span id="criteria5Text"></span></h3>
+        <table class="question-table">
+          <thead>
+            <tr>
+              <th>评分</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>支持者表现</td>
+              <td><input type="radio" name="personalizedDimension5" value="1" onchange="saveResponse('个性化维度5', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension5" value="2" onchange="saveResponse('个性化维度5', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension5" value="3" onchange="saveResponse('个性化维度5', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension5" value="4" onchange="saveResponse('个性化维度5', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension5" value="5" onchange="saveResponse('个性化维度5', this.value)"></td>
+            </tr>
+          </tbody>
+        </table> -->
+                <h3>8.1 <span id="criteria1Text"></span></h3>
+        <table class="question-table">
+          <thead>
+            <tr>
+              <th>评分</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span id="criteria1TextShort">支持者表现</span></td> <!-- 使用一个简短的ID来显示 -->
+              <td><input type="radio" name="personalizedDimension1" value="1" onchange="saveResponse('个性化维度1', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension1" value="2" onchange="saveResponse('个性化维度1', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension1" value="3" onchange="saveResponse('个性化维度1', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension1" value="4" onchange="saveResponse('个性化维度1', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension1" value="5" onchange="saveResponse('个性化维度1', this.value)"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>8.2 <span id="criteria2Text"></span></h3>
+        <table class="question-table">
+          <thead>
+            <tr>
+              <th>评分</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span id="criteria2TextShort">支持者表现</span></td>
+              <td><input type="radio" name="personalizedDimension2" value="1" onchange="saveResponse('个性化维度2', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension2" value="2" onchange="saveResponse('个性化维度2', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension2" value="3" onchange="saveResponse('个性化维度2', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension2" value="4" onchange="saveResponse('个性化维度2', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension2" value="5" onchange="saveResponse('个性化维度2', this.value)"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>8.3 <span id="criteria3Text"></span></h3>
+        <table class="question-table">
+          <thead>
+            <tr>
+              <th>评分</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span id="criteria3TextShort">支持者表现</span></td>
+              <td><input type="radio" name="personalizedDimension3" value="1" onchange="saveResponse('个性化维度3', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension3" value="2" onchange="saveResponse('个性化维度3', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension3" value="3" onchange="saveResponse('个性化维度3', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension3" value="4" onchange="saveResponse('个性化维度3', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension3" value="5" onchange="saveResponse('个性化维度3', this.value)"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>8.4 <span id="criteria4Text"></span></h3>
+        <table class="question-table">
+          <thead>
+            <tr>
+              <th>评分</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span id="criteria4TextShort">支持者表现</span></td>
+              <td><input type="radio" name="personalizedDimension4" value="1" onchange="saveResponse('个性化维度4', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension4" value="2" onchange="saveResponse('个性化维度4', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension4" value="3" onchange="saveResponse('个性化维度4', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension4" value="4" onchange="saveResponse('个性化维度4', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension4" value="5" onchange="saveResponse('个性化维度4', this.value)"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>8.5 <span id="criteria5Text"></span></h3>
+        <table class="question-table">
+          <thead>
+            <tr>
+              <th>评分</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span id="criteria5TextShort">支持者表现</span></td>
+              <td><input type="radio" name="personalizedDimension5" value="1" onchange="saveResponse('个性化维度5', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension5" value="2" onchange="saveResponse('个性化维度5', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension5" value="3" onchange="saveResponse('个性化维度5', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension5" value="4" onchange="saveResponse('个性化维度5', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension5" value="5" onchange="saveResponse('个性化维度5', this.value)"></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <!-- 总体评论 -->
+        <h3>9. 总体评论</h3>
+        <textarea id="comments" rows="4" placeholder="请输入任何额外评论或反馈..." onchange="saveResponse('评论', this.value)"></textarea>
+        
+        <div class="phase-control">
+          <button onclick="completeCurrentGroup()">完成评估，提交结果</button>
+        </div>
+      </div>
+        </main>
+      </div>
+    </div>
+  </div>
+  <!-- 完成评估界面 -->
+  <div id="completionMessage" class="evaluation-section hidden">
+    <h2>评估完成!</h2>
+    <p>您已完成全部对话组的评估。感谢您的参与!</p>
+    <button onclick="location.reload()">重新开始评估</button>
+  </div>
+  <div id="notification"></div>
+  <div id="saveIndicator" class="save-indicator">已保存</div>
+  
+  <script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script>
+    const SUPABASE_URL = "https://ullfhnwwlaaxzkjmexel.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_rCo5614l0iHicnDWrh1f1Q_5wFODfMt";
+    const SUPABASE_TABLE = "supporter_eval";
+    const STIMULI_ROOT = "./data/data_zh_en";
+    const MAX_GROUP_SCAN = 200;
+    const ID_STORAGE_KEY = "supporterEvaluationUserId";
+    const NAME_STORAGE_KEY = "supporterEvaluationAnnotatorName";
+    const PENDING_STORAGE_KEY = "supporterEvaluationPendingQueue";
+
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const SCORE_KEYS = [
+      "fluency", "coherence", "consistency", "safety", "empathy", "relationship", "dialogueOrientation",
+      "personalizedDimension1", "personalizedDimension2", "personalizedDimension3", "personalizedDimension4", "personalizedDimension5"
+    ];
+    const AGE_GROUP_CRITERIA = {
+      child_3_12: {
+        label: "童年与预青春期 (3-12)",
+        criteria: ["简单语言", "游戏与叙事", "情感敏感度", "家庭影响", "安全感建立"]
+      },
+      teen_13_18: {
+        label: "青少年期 (13-18)",
+        criteria: ["尊重独立性", "支持情绪表达", "认知引导", "价值观与目标探索", "敏感理解"]
+      },
+      young_19_45: {
+        label: "青年期 (19-45)",
+        criteria: ["澄清与计划", "情绪反应性", "认知觉察", "环境适应", "优势与成长"]
+      },
+      mid_46_59: {
+        label: "中年期 (46-59)",
+        criteria: ["角色冲突", "生命意义", "压力与情绪管理", "叙事重构", "共情与尊重"]
+      },
+      old_60_plus: {
+        label: "老年期 (60+)",
+        criteria: ["尊重与自主", "生命回顾", "丧失与孤独处理", "社区参与", "遗产与价值肯定"]
+      }
+    };
+    const AGE_GROUP_ALIASES = {
+      "3-12": "child_3_12",
+      "13-18": "teen_13_18",
+      "19-45": "young_19_45",
+      "46-59": "mid_46_59",
+      "60+": "old_60_plus",
+      child: "child_3_12",
+      teen: "teen_13_18",
+      young: "young_19_45",
+      middle: "mid_46_59",
+      old: "old_60_plus"
+    };
+
+    let currentUserId = "";
+    let currentUserName = "";
+    let currentGroupId = "";
+    let userStates = {};
+    let completedGroups = {};
+    let currentGroupData = null;
+    let totalGroups = 0;
+    let groupStartTime = 0;
+    let dialogueGroups = [];
+    let sortedGroupIds = [];
+
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("startScreen").classList.remove("hidden");
+      document.getElementById("responseMessage").classList.add("hidden");
+      document.getElementById("evaluationContainer").classList.add("hidden");
+      document.getElementById("completionMessage").classList.add("hidden");
+
+      const urlUid = (new URLSearchParams(window.location.search).get("uid") || "").trim();
+      const savedUserId = localStorage.getItem(ID_STORAGE_KEY) || "";
+      const savedName = localStorage.getItem(NAME_STORAGE_KEY) || "";
+
+      document.getElementById("userId").value = urlUid || savedUserId;
+      document.getElementById("annotatorName").value = savedName;
+    });
+
+    async function startEvaluation() {
+      const userId = String(document.getElementById("userId").value.trim());
+      const annotatorName = String(document.getElementById("annotatorName").value.trim());
+      if (!userId) {
+        showNotification("请输入用户代号", "error");
+        return;
+      }
+      if (!annotatorName) {
+        showNotification("请输入姓名", "error");
+        return;
+      }
+
+      currentUserId = userId;
+      currentUserName = annotatorName;
+      localStorage.setItem(ID_STORAGE_KEY, userId);
+      localStorage.setItem(NAME_STORAGE_KEY, annotatorName);
+
+      document.body.classList.add("eval-mode");
+      document.getElementById("startScreen").classList.add("hidden");
+      document.getElementById("responseMessage").classList.remove("hidden");
+      try {
+        await loadStimuli();
+        await loadUserState();
+        await flushPendingQueue();
+        setTimeout(function() {
+          document.getElementById("responseMessage").classList.add("hidden");
+          if (currentGroupData) {
+            showEvaluationInterface();
+          } else {
+            showCompletionMessage();
+          }
+        }, 800);
+      } catch (error) {
+        document.body.classList.remove("eval-mode");
+        document.getElementById("responseMessage").classList.add("hidden");
+        document.getElementById("startScreen").classList.remove("hidden");
+        showNotification(error.message || "初始化失败", "error");
+      }
+    }
+
+    async function loadStimuli() {
+      const jobs = [];
+      for (let gid = 1; gid <= MAX_GROUP_SCAN; gid += 1) {
+        jobs.push(loadOneGroupFromFolder(gid));
+      }
+      const results = await Promise.all(jobs);
+      const validGroups = results
+        .filter(function(item) { return item !== null; })
+        .sort(function(a, b) { return Number(a.group_id) - Number(b.group_id); });
+
+      if (!validGroups.length) {
+        throw new Error("未读取到任何样本，请检查 data/data_zh_en/<group_id>/ 下的 txt 文件");
+      }
+
+      dialogueGroups = validGroups;
+      sortedGroupIds = validGroups.map(function(item) { return String(item.group_id); });
+      totalGroups = sortedGroupIds.length;
+    }
+
+    async function loadOneGroupFromFolder(groupId) {
+      const base = `${STIMULI_ROOT}/${groupId}`;
+      try {
+        const [zhRes, enRes, criteriaRes] = await Promise.all([
+          fetch(`${base}/dialogue_zh.txt`, { cache: "no-store" }),
+          fetch(`${base}/dialogue_en.txt`, { cache: "no-store" }),
+          fetch(`${base}/criteria.txt`, { cache: "no-store" })
+        ]);
+        if (!zhRes.ok || !enRes.ok || !criteriaRes.ok) {
+          return null;
+        }
+
+        const [dialogueZh, dialogueEn, criteriaRaw] = await Promise.all([
+          zhRes.text(),
+          enRes.text(),
+          criteriaRes.text()
+        ]);
+        const criteria = parseCriteriaText(criteriaRaw);
+        return {
+          group_id: String(groupId),
+          dialogue_zh: dialogueZh.trim(),
+          dialogue_en: dialogueEn.trim(),
+          criteria_1: criteria[0],
+          criteria_2: criteria[1],
+          criteria_3: criteria[2],
+          criteria_4: criteria[3],
+          criteria_5: criteria[4],
+          age_group: inferAgeGroupFromCriteria(criteria)
+        };
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function parseCriteriaText(criteriaRaw) {
+      const lines = String(criteriaRaw || "")
+        .split(/\r?\n/)
+        .map(function(line) { return line.trim(); })
+        .filter(function(line) { return line.length > 0; })
+        .map(function(line) { return line.replace(/^\d+\s*[:：]\s*/, ""); });
+      const fallback = ["个性化维度1", "个性化维度2", "个性化维度3", "个性化维度4", "个性化维度5"];
+      return [0, 1, 2, 3, 4].map(function(idx) { return lines[idx] || fallback[idx]; });
+    }
+
+    function inferAgeGroupFromCriteria(criteriaList) {
+      const text = (criteriaList || []).join(" ");
+      if (/家庭|游戏|叙事|儿童/.test(text)) return "child_3_12";
+      if (/青少年|独立|价值观|目标探索/.test(text)) return "teen_13_18";
+      if (/澄清|计划|环境适应|优势/.test(text)) return "young_19_45";
+      if (/中年|角色冲突|生命意义|叙事重构/.test(text)) return "mid_46_59";
+      if (/丧失|孤独|生命回顾|传承|老年/.test(text)) return "old_60_plus";
+      return "";
+    }
+
+    async function loadUserState() {
+      const { data, error } = await supabaseClient
+        .from(SUPABASE_TABLE)
+        .select("*")
+        .eq("annotator_id", currentUserId)
+        .order("created_at", { ascending: true });
+      if (error) {
+        throw new Error("读取用户状态失败: " + error.message);
+      }
+
+      userStates = {};
+      completedGroups = {};
+      (data || []).forEach(row => {
+        const gid = String(row.group_id);
+        userStates[gid] = mapRowToSavedData(row);
+        completedGroups[gid] = row.completion_status === "已完成";
+      });
+
+      currentGroupId = findCurrentGroupId();
+      const groupMap = getGroupMap();
+      currentGroupData = currentGroupId ? groupMap[currentGroupId] : null;
+      updateProgress();
+    }
+
+    function getGroupMap() {
+      const map = {};
+      dialogueGroups.forEach(item => {
+        map[String(item.group_id)] = item;
+      });
+      return map;
+    }
+
+    function findCurrentGroupId() {
+      for (const gid of sortedGroupIds) {
+        if (userStates[gid] && !completedGroups[gid]) return gid;
+      }
+      for (const gid of sortedGroupIds) {
+        if (!userStates[gid]) return gid;
+      }
+      return "";
+    }
+
+    function normalizeAgeGroup(rawAgeGroup) {
+      const value = String(rawAgeGroup || "").trim();
+      if (!value) return "";
+      if (AGE_GROUP_CRITERIA[value]) return value;
+      const lower = value.toLowerCase();
+      return AGE_GROUP_ALIASES[lower] || AGE_GROUP_ALIASES[value] || "";
+    }
+
+    function getCriteriaLinesFromSample() {
+      return [
+        currentGroupData.criteria_1,
+        currentGroupData.criteria_2,
+        currentGroupData.criteria_3,
+        currentGroupData.criteria_4,
+        currentGroupData.criteria_5
+      ].map(function(value, idx) {
+        return value || `个性化维度${idx + 1}`;
+      });
+    }
+
+    function getAgeGroupHintLabel() {
+      const normalizedAgeGroup = normalizeAgeGroup(currentGroupData.age_group);
+      if (normalizedAgeGroup && AGE_GROUP_CRITERIA[normalizedAgeGroup]) {
+        return AGE_GROUP_CRITERIA[normalizedAgeGroup].label + "（推断，仅供参考）";
+      }
+      return "未识别（不影响下方细则；细则以本组 criteria.txt 为准）";
+    }
+
+    function renderAgeSpecificGuidance() {
+      const ageLabelNode = document.getElementById("currentAgeGroupLabel");
+      ageLabelNode.textContent = getAgeGroupHintLabel();
+    }
+
+    function escapeHtml(text) {
+      return String(text || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function shortenCriteriaLabel(text, maxLen) {
+      const s = String(text || "").replace(/\s+/g, " ").trim();
+      const limit = maxLen || 42;
+      if (s.length <= limit) return s;
+      return s.slice(0, limit - 1) + "…";
+    }
+
+    function parseDialogueTurns(raw) {
+      const lines = String(raw || "").split(/\r?\n/);
+      const turns = [];
+      let bufferRole = "";
+      let bufferText = [];
+
+      function flush() {
+        if (!bufferRole && !bufferText.length) return;
+        turns.push({
+          role: bufferRole || "line",
+          text: bufferText.join("\n").trim()
+        });
+        bufferRole = "";
+        bufferText = [];
+      }
+
+      lines.forEach(function(line) {
+        const trimmed = line.trim();
+        if (!trimmed) return;
+        const m = trimmed.match(/^(Supporter|Seeker|支持者|求助者)\s*[:：]\s*(.*)$/i);
+        if (m) {
+          flush();
+          const who = m[1].toLowerCase();
+          const role = who.indexOf("seek") !== -1 || who.indexOf("求") !== -1 ? "seeker" : "supporter";
+          bufferRole = role;
+          bufferText.push(m[2]);
+        } else if (bufferRole) {
+          bufferText.push(trimmed);
+        } else {
+          bufferRole = "line";
+          bufferText.push(trimmed);
+        }
+      });
+      flush();
+      return turns;
+    }
+
+    function renderDialogueBubbles(container, raw, roleLabels) {
+      if (!container) return;
+      const labels = roleLabels || { supporter: "Supporter", seeker: "Seeker" };
+      const turns = parseDialogueTurns(raw);
+      const html = turns.map(function(turn) {
+        const rowClass = turn.role === "seeker" ? "seeker" : "supporter";
+        const roleName = turn.role === "seeker" ? labels.seeker : labels.supporter;
+        const body = escapeHtml(turn.text).replace(/\n/g, "<br>");
+        return `<div class="dialogue-bubble-row ${rowClass}"><div class="dialogue-bubble"><span class="bubble-role">${roleName}</span>${body}</div></div>`;
+      }).join("");
+      container.innerHTML = html || `<div class="dialogue-bubble-row seeker"><div class="dialogue-bubble">（无对话文本）</div></div>`;
+    }
+
+    function classifyEnglishDialogue(zh, en) {
+      const z = String(zh || "").trim();
+      const e = String(en || "").trim();
+      if (!e) {
+        return {
+          mode: "empty",
+          message: "「英文原文」：已读取 dialogue_en.txt，但该文件为空。默认视图中下方英文区无内容；「仅英文」下会回退显示中文对白。",
+          bilingualPlaceholder: "本组 dialogue_en.txt 为空，暂无英文原文气泡。"
+        };
+      }
+      if (e === z) {
+        return {
+          mode: "same",
+          message: "「英文原文」：dialogue_en.txt 与中文译稿逐字相同，可能尚未单独提供英文原文。",
+          bilingualPlaceholder: "英文文件与中文相同，下方英文区不重复显示。"
+        };
+      }
+      const probe = e.slice(0, Math.min(2400, e.length));
+      const han = (probe.match(/[\u4e00-\u9fff]/g) || []).length;
+      const latin = (probe.match(/[A-Za-z]/g) || []).length;
+      var looksEnglish = latin >= 28 || (latin >= 16 && latin > han * 1.1);
+      if (!looksEnglish) {
+        return {
+          mode: "not_english",
+          message: "「英文原文」：dialogue_en.txt 已读取，但正文以汉字为主，不像英文原文。默认视图中下方英文区不排气泡；请核对数据或改用「仅中文」。",
+          bilingualPlaceholder: "该文件内容不像英文原文，已省略以免与上方中文重复。"
+        };
+      }
+      return { mode: "ok", message: "", bilingualPlaceholder: "" };
+    }
+
+    function renderDialogueEnNotice(classification) {
+      var el = document.getElementById("dialogueEnNotice");
+      if (!el) return;
+      if (!classification || !classification.message) {
+        el.classList.add("hidden");
+        el.textContent = "";
+        return;
+      }
+      el.classList.remove("hidden");
+      el.textContent = classification.message;
+    }
+
+    function renderEnglishColumnPlaceholder(container, bodyText) {
+      if (!container) return;
+      container.innerHTML =
+        '<div class="dialogue-placeholder">' +
+        "<p>" + escapeHtml(bodyText) + "</p>" +
+        "<p class=\"dialogue-placeholder-hint\">若需完整英文原文，请在本组目录中补充或修正 <code>dialogue_en.txt</code>。</p>" +
+        "</div>";
+    }
+
+    function renderEnOnlyView(zh, en, classification) {
+      var wrap = document.getElementById("dialogueBubblesEnOnly");
+      if (!wrap) return;
+      if (classification.mode === "ok") {
+        renderDialogueBubbles(wrap, en, { supporter: "Supporter", seeker: "Seeker" });
+        return;
+      }
+      if (classification.mode === "not_english") {
+        renderEnglishColumnPlaceholder(wrap, classification.bilingualPlaceholder);
+        return;
+      }
+      var bannerText =
+        classification.mode === "empty"
+          ? "本组未提供独立英文对白（dialogue_en.txt 为空）。下方为中文对白，便于在「仅英文」页签内继续阅读。"
+          : "本组英文文件与中文相同，无独立英文版本。下方为同一套中文对白。";
+      wrap.innerHTML =
+        '<div class="dialogue-en-fallback-banner">' + escapeHtml(bannerText) + "</div>" +
+        '<div class="dialogue-bubble-scroll-host"></div>';
+      var host = wrap.querySelector(".dialogue-bubble-scroll-host");
+      renderDialogueBubbles(host, zh, { supporter: "支持者", seeker: "求助者" });
+    }
+
+    function renderAllDialogueViews() {
+      var zh = currentGroupData.dialogue_zh || "";
+      var en = currentGroupData.dialogue_en || "";
+      var classification = classifyEnglishDialogue(zh, en);
+      currentGroupData._dialogueEnClassification = classification;
+      renderDialogueEnNotice(classification);
+
+      renderDialogueBubbles(document.getElementById("dialogueBubblesZhStack"), zh, { supporter: "支持者", seeker: "求助者" });
+      var enStack = document.getElementById("dialogueBubblesEnStack");
+      if (classification.mode === "ok") {
+        renderDialogueBubbles(enStack, en, { supporter: "Supporter", seeker: "Seeker" });
+      } else {
+        renderEnglishColumnPlaceholder(enStack, classification.bilingualPlaceholder);
+      }
+
+      renderDialogueBubbles(document.getElementById("dialogueBubblesZhOnly"), zh, { supporter: "支持者", seeker: "求助者" });
+      renderEnOnlyView(zh, en, classification);
+    }
+
+    function setDialogueView(mode) {
+      const stacked = document.getElementById("dialogueViewStacked");
+      const zhOnly = document.getElementById("dialogueViewZh");
+      const enOnly = document.getElementById("dialogueViewEn");
+      stacked.classList.add("hidden");
+      zhOnly.classList.add("hidden");
+      enOnly.classList.add("hidden");
+      if (mode === "zh") {
+        zhOnly.classList.remove("hidden");
+      } else if (mode === "en") {
+        enOnly.classList.remove("hidden");
+      } else {
+        stacked.classList.remove("hidden");
+      }
+    }
+
+    function mapRowToSavedData(row) {
+      return {
+        "流畅性": row.fluency,
+        "连贯性": row.coherence,
+        "一致性": row.consistency,
+        "安全性": row.safety,
+        "同理心": row.empathy,
+        "关系建设": row.relationship,
+        "对话导向性": row.dialogue_orientation,
+        "个性化维度1": row.p1,
+        "个性化维度2": row.p2,
+        "个性化维度3": row.p3,
+        "个性化维度4": row.p4,
+        "个性化维度5": row.p5,
+        "评论": row.comments || ""
+      };
+    }
+
+    async function saveResponse() {
+      if (!currentGroupId) return;
+      showSavingIndicator("保存中...");
+      const payload = buildSubmissionPayload({
+        completionStatus: completedGroups[currentGroupId] ? "已完成" : "草稿"
+      });
+      try {
+        await savePayload(payload);
+        userStates[currentGroupId] = mapRowToSavedData(payload);
+        showSavingIndicator("已保存");
+      } catch (error) {
+        queuePendingPayload(payload);
+        showSavingIndicator("离线暂存");
+      }
+    }
+
+    function showSavingIndicator(text) {
+      var indicator = document.getElementById("saveIndicator");
+      indicator.textContent = text;
+      indicator.style.display = "block";
+      if (text === "保存中...") {
+        indicator.classList.add("saving");
+      } else {
+        indicator.classList.remove("saving");
+      }
+      setTimeout(function() {
+        indicator.style.display = "none";
+      }, 1500);
+    }
+
+    // 显示评估界面
+    function showEvaluationInterface() {
+      document.body.classList.add("eval-mode");
+      // 添加这行调试日志
+      console.log("准备显示评估界面，currentGroupData 内容:", currentGroupData);
+      // 隐藏其他界面
+      document.getElementById('completionMessage').classList.add('hidden');
+      // 显示评估界面
+      document.getElementById('evaluationContainer').classList.remove('hidden');
+      // 填充内容（默认显示中文）
+      renderAllDialogueViews();
+      setDialogueView("stack");
+      updateTabStatus("dialogue", "stack");
+      // 个性化维度：始终以本组目录 criteria.txt 解析出的 5 条细则为准
+      const criteriaValues = getCriteriaLinesFromSample();
+      renderAgeSpecificGuidance();
+      document.getElementById('criteria1Text').textContent = criteriaValues[0];
+      document.getElementById('criteria2Text').textContent = criteriaValues[1];
+      document.getElementById('criteria3Text').textContent = criteriaValues[2];
+      document.getElementById('criteria4Text').textContent = criteriaValues[3];
+      document.getElementById('criteria5Text').textContent = criteriaValues[4];
+      document.getElementById('criteria1TextShort').textContent = shortenCriteriaLabel(criteriaValues[0], 40);
+      document.getElementById('criteria2TextShort').textContent = shortenCriteriaLabel(criteriaValues[1], 40);
+      document.getElementById('criteria3TextShort').textContent = shortenCriteriaLabel(criteriaValues[2], 40);
+      document.getElementById('criteria4TextShort').textContent = shortenCriteriaLabel(criteriaValues[3], 40);
+      document.getElementById('criteria5TextShort').textContent = shortenCriteriaLabel(criteriaValues[4], 40);
+      // **新增：为所有李克特量表表格添加提示行**
+      addLikertScaleHint('question-table');
+      // 恢复已保存的回答 - 必须在填充内容后执行
+      restoreSavedResponses();
+      // 更新进度显示
+      updateProgress();
+      // 更新界面标题
+      document.getElementById('evaluationTitle').textContent =
+        `心理健康支持对话评估系统 - 第 ${currentGroupData.group_id} 组`;
+      groupStartTime = Date.now();
+    }
+
+    // **新增：为指定类名的表格添加李克特量表提示行到thead中**
+    function addLikertScaleHint(tableClass) {
+      // 定义李克特量表的含义 (优化描述)
+      const likertLabels = {
+        1: "完全不符合 / 根本没有",
+        2: "基本不符合 / 很少",
+        3: "部分符合 / 有时",
+        4: "基本符合 / 经常",
+        5: "完全符合 / 始终如一"
+      };
+
+      // 获取所有具有指定类名的表格
+      const tables = document.querySelectorAll(`.${tableClass}`);
+      tables.forEach(table => {
+        // 查找表格的 thead
+        const thead = table.querySelector('thead');
+        if (thead) {
+          // 查找数字行 (th)
+          const numberRow = thead.querySelector('tr:first-child');
+          if (numberRow) {
+            // 获取所有数字单元格 (th)
+            const numberCells = numberRow.querySelectorAll('th');
+            if (numberCells.length > 1) { // 确保有数字列（第一列是“评分”）
+              numberCells.forEach((cell, index) => {
+                if (index > 0 && index <= 5) { // 跳过第一列，处理1-5列
+                  const originalText = cell.textContent || '';
+                  // 检查是否已经添加了提示，避免重复
+                  if (!originalText.includes(likertLabels[index])) {
+                      // 将原始数字和提示组合
+                      cell.innerHTML = `${originalText}<br><span style="font-size: 0.8em; color: #666; font-style: italic;">${likertLabels[index]}</span>`;
+                  }
+                }
+              });
+            }
+          }
+        }
+      });
+    }
+
+
+    // 语言切换功能
+    function switchLanguage(section, language) {
+      if (section === 'dialogue') {
+        if (language === 'zh') {
+          setDialogueView("zh");
+        } else if (language === 'en') {
+          setDialogueView("en");
+        } else {
+          setDialogueView("stack");
+        }
+        updateTabStatus('dialogue', language);
+      }
+    }
+
+    // 更新标签状态函数
+    function updateTabStatus(section, language) {
+      // 获取对应部分的所有标签
+      var tabs = document.querySelectorAll(`.${section}-tabs .language-tab`);
+      // 移除所有活动标签
+      tabs.forEach(tab => tab.classList.remove('active'));
+      // 激活选中的标签
+      var tabIndex = language === 'stack' ? 0 : language === 'en' ? 1 : 2;
+      if (tabs[tabIndex]) {
+        tabs[tabIndex].classList.add('active');
+      }
+    }
+
+    // 完成当前组评估
+    async function completeCurrentGroup() {
+      // 验证是否完成
+      if (!validateEvaluation()) {
+        showNotification('请先完成所有评估项目', 'error');
+        return;
+      }
+      const scoreValues = SCORE_KEYS.map(function(name) {
+        return Number(document.querySelector(`input[name="${name}"]:checked`).value);
+      });
+      const isAllSame = scoreValues.every(function(item) {
+        return item === scoreValues[0];
+      });
+      if (isAllSame) {
+        const confirmed = window.confirm("检测到打分过于统一，请确保已遵循 Annotation Guideline。是否仍要提交？");
+        if (!confirmed) return;
+      }
+
+      const payload = buildSubmissionPayload({
+        completionStatus: "已完成",
+        durationSeconds: Math.max(0, Math.floor((Date.now() - groupStartTime) / 1000))
+      });
+      try {
+        await savePayload(payload);
+        userStates[currentGroupId] = mapRowToSavedData(payload);
+        completedGroups[currentGroupId] = true;
+        updateProgress();
+        await flushPendingQueue();
+        loadNextGroup();
+      } catch (error) {
+        queuePendingPayload(payload);
+        showNotification("提交失败，已离线暂存", "error");
+      }
+    }
+
+    function buildSubmissionPayload(options) {
+      return {
+        annotator_id: currentUserId,
+        annotator_name: currentUserName,
+        group_id: String(currentGroupId),
+        fluency: toNullableInt(document.querySelector('input[name="fluency"]:checked')?.value),
+        coherence: toNullableInt(document.querySelector('input[name="coherence"]:checked')?.value),
+        consistency: toNullableInt(document.querySelector('input[name="consistency"]:checked')?.value),
+        safety: toNullableInt(document.querySelector('input[name="safety"]:checked')?.value),
+        empathy: toNullableInt(document.querySelector('input[name="empathy"]:checked')?.value),
+        relationship: toNullableInt(document.querySelector('input[name="relationship"]:checked')?.value),
+        dialogue_orientation: toNullableInt(document.querySelector('input[name="dialogueOrientation"]:checked')?.value),
+        p1: toNullableInt(document.querySelector('input[name="personalizedDimension1"]:checked')?.value),
+        p2: toNullableInt(document.querySelector('input[name="personalizedDimension2"]:checked')?.value),
+        p3: toNullableInt(document.querySelector('input[name="personalizedDimension3"]:checked')?.value),
+        p4: toNullableInt(document.querySelector('input[name="personalizedDimension4"]:checked')?.value),
+        p5: toNullableInt(document.querySelector('input[name="personalizedDimension5"]:checked')?.value),
+        comments: document.getElementById("comments").value || "",
+        completion_status: options.completionStatus || "草稿",
+        duration_seconds: options.durationSeconds == null ? null : options.durationSeconds
+      };
+    }
+
+    function toNullableInt(value) {
+      if (value == null || value === "") return null;
+      const parsed = Number(value);
+      return Number.isNaN(parsed) ? null : parsed;
+    }
+
+    async function savePayload(payload) {
+      const { error } = await supabaseClient
+        .from(SUPABASE_TABLE)
+        .upsert(payload, { onConflict: "annotator_id,group_id" });
+      if (error) throw error;
+    }
+
+    function queuePendingPayload(payload) {
+      const queue = JSON.parse(localStorage.getItem(PENDING_STORAGE_KEY) || "[]");
+      queue.push(payload);
+      localStorage.setItem(PENDING_STORAGE_KEY, JSON.stringify(queue));
+    }
+
+    async function flushPendingQueue() {
+      const queue = JSON.parse(localStorage.getItem(PENDING_STORAGE_KEY) || "[]");
+      if (!queue.length) return;
+      const remaining = [];
+      for (const payload of queue) {
+        try {
+          await savePayload(payload);
+        } catch (error) {
+          remaining.push(payload);
+        }
+      }
+      localStorage.setItem(PENDING_STORAGE_KEY, JSON.stringify(remaining));
+    }
+
+    function loadNextGroup() {
+      showNotification("正在加载下一组...", "info");
+      const currentIdx = sortedGroupIds.indexOf(String(currentGroupId));
+      let nextGroup = "";
+      for (let idx = currentIdx + 1; idx < sortedGroupIds.length; idx += 1) {
+        const gid = sortedGroupIds[idx];
+        if (!completedGroups[gid]) {
+          nextGroup = gid;
+          break;
+        }
+      }
+      if (!nextGroup) {
+        showCompletionMessage();
+        return;
+      }
+      currentGroupId = nextGroup;
+      currentGroupData = getGroupMap()[nextGroup];
+      resetForm();
+      showEvaluationInterface();
+      window.scrollTo(0, 0);
+    }
+
+    // 重置表单
+    function resetForm() {
+      // 重置所有单选按钮
+      var radioButtons = document.querySelectorAll('input[type="radio"]');
+      radioButtons.forEach(function(radio) {
+        radio.checked = false;
+      });
+      // 重置评论框
+      var textareas = document.querySelectorAll('textarea');
+      textareas.forEach(function(textarea) {
+        textarea.value = '';
+      });
+      // 隐藏评估界面，显示第一阶段界面
+      document.getElementById('evaluationContainer').classList.add('hidden');
+      // 重置语言选项卡到中英对照
+      switchLanguage('dialogue', 'stack');
+    }
+
+    // 显示完成消息
+    function showCompletionMessage() {
+      // 隐藏所有评估界面
+      document.getElementById('evaluationContainer').classList.add('hidden');
+      // 更新完成消息内容
+      document.getElementById('completionMessage').innerHTML = `
+        <div class="completion-content">
+          <h2>🎉 评估完成！</h2>
+          <p>您已完成所有${totalGroups}组对话的评估。感谢您的参与和贡献！</p> <!-- 使用动态的 totalGroups -->
+          <div class="completion-stats">
+            <p>总共评估了 <strong>${totalGroups}</strong> 组对话</p> <!-- 使用动态的 totalGroups -->
+            <p>您的用户代号: <strong>${currentUserId}</strong></p>
+          </div>
+          <div class="completion-actions">
+            <button onclick="location.reload()">重新开始评估</button>
+          </div>
+        </div>
+      `;
+      // 显示完成消息
+      document.getElementById('completionMessage').classList.remove('hidden');
+    }
+
+    // 恢复已保存的回答
+    function restoreSavedResponses() {
+      console.log('开始恢复已保存的回答，当前组ID:', currentGroupId);
+      if (userStates[String(currentGroupId)]) {
+        var savedData = userStates[String(currentGroupId)];
+        console.log('找到当前组的保存数据:', savedData);
+        // 恢复单选按钮
+        restoreRadioButtons(savedData);
+        // 恢复评论框
+        if (savedData['评论']) {
+          document.getElementById('comments').value = savedData['评论'];
+          console.log('已恢复评论:', savedData['评论']);
+        }
+      } else {
+        console.log('当前组没有保存的数据');
+      }
+    }
+
+    // 恢复单选按钮
+    function restoreRadioButtons(savedData) {
+      // 所有单选按钮字段，与 saveEvaluationAnswers 中保存的字段名一致
+      var radioFields = [
+        {field: '流畅性', name: 'fluency'},
+        {field: '连贯性', name: 'coherence'},
+        {field: '一致性', name: 'consistency'},
+        {field: '安全性', name: 'safety'},
+        {field: '同理心', name: 'empathy'},
+        {field: '关系建设', name: 'relationship'},
+        {field: '对话导向性', name: 'dialogueOrientation'},
+        {field: '个性化维度1', name: 'personalizedDimension1'},
+        {field: '个性化维度2', name: 'personalizedDimension2'},
+        {field: '个性化维度3', name: 'personalizedDimension3'},
+        {field: '个性化维度4', name: 'personalizedDimension4'},
+        {field: '个性化维度5', name: 'personalizedDimension5'}
+      ];
+
+      radioFields.forEach(function(item) {
+        var value = savedData[item.field];
+        if (value) {
+          console.log(`尝试恢复单选按钮: 字段=${item.field}, Name=${item.name}, Value=${value}`);
+          var radio = document.querySelector(`input[name="${item.name}"][value="${value}"]`);
+          if (radio) {
+            radio.checked = true;
+            console.log(`成功恢复单选按钮: ${item.name} = ${value}`);
+          } else {
+            console.error(`未找到单选按钮: name="${item.name}", value="${value}"`);
+          }
+        }
+      });
+    }
+
+    // 验证评估
+    function validateEvaluation() {
+      var requiredFields = [
+        'fluency', 'coherence', 'consistency', 'safety', 'empathy', 'relationship', 'dialogueOrientation',
+        'personalizedDimension1', 'personalizedDimension2', 'personalizedDimension3', 'personalizedDimension4', 'personalizedDimension5'
+      ];
+      for (var i = 0; i < requiredFields.length; i++) {
+        var fieldName = requiredFields[i];
+        var selected = document.querySelector(`input[name="${fieldName}"]:checked`);
+        if (!selected) return false;
+      }
+      return true;
+    }
+
+    // 更新进度显示
+    function updateProgress() {
+      var completed = Object.keys(completedGroups).filter(function(key) {
+        return completedGroups[key] === true;
+      }).length;
+      var total = totalGroups || 0;
+      var percentage = total === 0 ? 0 : Math.round((completed / total) * 100);
+      var bar = document.getElementById("progressBar");
+      if (bar) bar.style.width = percentage + "%";
+      var elTotal = document.getElementById("progressTotal");
+      var elDone = document.getElementById("progressDone");
+      var elPct = document.getElementById("progressPct");
+      if (elTotal) elTotal.textContent = String(total);
+      if (elDone) elDone.textContent = String(completed);
+      if (elPct) elPct.textContent = String(percentage);
+    }
+
+    // 显示通知
+    function showNotification(message, type) {
+      var notification = document.getElementById('notification');
+      notification.textContent = message;
+      notification.style.display = 'block';
+      if (type === "success") {
+        notification.style.background = "#2ecc71";
+      } else if (type === "info") {
+        notification.style.background = "#3498db";
+      } else {
+        notification.style.background = "#e74c3c";
+      }
+      setTimeout(function() {
+        notification.style.display = 'none';
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+[
+  {
+    "group_id": 1,
+    "dialogue_zh": "【示例数据】请将这里替换为真实对话中文内容。",
+    "dialogue_en": "[Sample data] Replace this with real English dialogue content.",
+    "criteria_1": "个性化维度1说明",
+    "criteria_2": "个性化维度2说明",
+    "criteria_3": "个性化维度3说明",
+    "criteria_4": "个性化维度4说明",
+    "criteria_5": "个性化维度5说明"
+  }
+]

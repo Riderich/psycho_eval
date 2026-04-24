@@ -1,0 +1,75 @@
+Supporter: assistant: Hello! How can I assist you today?
+
+Seeker: I feel really sad. I was sick and couldn’t go to school today, and my class did something special without me. I wanted to be there.
+
+Supporter: It sounds like you’re feeling left out and disappointed. Can you tell me more about how this makes you feel and what you were most looking forward to about being there?
+
+Seeker: I wanted to help with the project. We worked so hard on it, and I was excited to show it to everyone. But I missed it, and now it feels like... like they didn’t need me. It hurts.
+
+Supporter: It’s clear that this situation has affected your sense of belonging and importance. You put a lot of effort into the project and were looking forward to sharing it with your classmates. This rejection can hurt. How important is it to you to be recognized for your contributions by your peers?
+
+Seeker: I just wanted them to see I worked hard too. I wanted to stand with my friends and feel proud together. But now it’s like they had fun without me, and I wasn’t part of it.
+
+Supporter: Your desire to be seen and celebrated for your hard work is very normal. Being excluded from a shared experience can make us feel disconnected and alone. What can we do to help you deal with these feelings and move forward?
+
+Seeker: I don’t know. I just wish I could’ve been there. Maybe… maybe they’ll still remember I helped? I just want to feel like I mattered in it.
+
+Supporter: You’re doing a great job expressing your feelings and trying to understand the situation from your perspective. Remembering that you contributed to the project might help you feel included in some way. Would it be helpful to talk to your friends about how you feel, or do you think that might be too difficult right now?
+
+Seeker: Maybe I could talk to them. But what if they don’t care I wasn’t there? That would make me feel worse. I don’t know if I can.
+
+Supporter: That’s a valid concern. Deciding to share your feelings with others can be challenging. However, it’s also an opportunity to strengthen your connections with friends. Perhaps you could consider what you want to say to them before you talk, so you have a clearer idea of how to express your feelings. This could make it easier when you do decide to speak with them. What do you think about that?
+
+Seeker: Maybe that would help. I could tell them I missed being with them and helping with the project. But I’m scared they’ll say it was fine without me. That would make me feel like I wasn’t needed at all.
+
+Supporter: It’s completely normal to be scared of what others might say, but opening up about your feelings can often lead to understanding and support. You could also let them know how much you value their friendship and the project. By doing so, you might find that your friends appreciate your honesty and are more likely to share their thoughts in a kind and supportive way. Are you willing to give it a try?
+
+Seeker: I guess I could try. I want them to know I cared about the project and being part of it. But what if they don’t really care about what I say? That would feel really bad.
+
+Supporter: Feeling rejected or misunderstood can be tough. However, it’s also important to remember that you cannot control how others will react. What you can control is how you handle the conversation. If they don’t react as you hoped, it’s an opportunity to practice self-compassion and remind yourself that your worth isn’t defined by their response. It takes courage to open up like this, and no matter the outcome, you’re doing something important for your own well-being. Would you like to work on a plan for how to proceed with this conversation, or do you have other questions about dealing with these feelings?
+
+Seeker: I think I want to try talking to them, but I’m still scared. Maybe we can make a plan? It might help me feel less worried.
+
+Supporter: Of course, we can make a plan. First, choose a private setting where you won’t be interrupted. Then, start the conversation by telling them how much you value your friendship and the project. You could say something like, "I really cared about being part of the project and being with you guys. I felt left out when I wasn't there." Let them know you're not upset with them, just with the situation. Afterward, ask them about their experience and listen to their response. This way, you can gauge their reaction and respond appropriately. Would you like to try this approach?
+
+Seeker: I think I can try... but what if they don’t understand? I’m still really nervous.
+
+Supporter: It’s perfectly okay to be nervous, and it’s normal for people to not always understand exactly what you mean, especially if they haven’t experienced the same thing. The goal of the conversation is not necessarily for them to agree with you, but for you to be heard and for you to process your feelings. If they don’t understand, it might be helpful to ask them to clarify what they do understand or what they think happened. Then, you can explain your side again, using simpler words or different examples if necessary. Remember, the more you practice expressing yourself, the better you’ll get at it. Do you feel more prepared now?
+
+Seeker: I guess I feel a little better about trying. I just hope they don’t think I’m silly for feeling this way. I really care about them and the project, so I want them to understand.
+
+Supporter: You should never feel silly for feeling deeply about something or someone. Your feelings are valid and deserve to be respected. It takes courage to express your true feelings, especially when you care about the people around you. Just be honest and open about why the situation matters to you. If they still don’t understand after your explanation, it’s not your fault. You did the best you could to communicate. Try to focus on the fact that you’ve taken an important step towards dealing with your emotions and strengthening your relationship with your friends. Good luck, and remember, I’m here to support you every step of the way.
+
+Seeker: I’ll try... but I’m still scared. What if they don’t get it? I don’t know if I can do it.
+
+Supporter: It’s okay to be scared, and it’s okay to take your time. You don’t have to rush into anything. You can wait until you feel more ready, and when you do, try starting small with something simple to say. Remember, even if they don’t fully understand at first, that’s okay. You can always try again later or find another way to express yourself. The important thing is that you are taking steps towards understanding and being understood. You’ve got this, and I believe in you. When you’re ready, you can take that next step.
+
+Seeker: I’ll think about it... but what if they don’t care? I don’t know if I can do it.
+
+Supporter: It’s understandable that the thought of being rejected by your friends can be overwhelming. However, it’s also important to remember that you cannot control how others will react. What you can control is how you handle the situation. Even if they don’t care in the way you hope, it’s still important to express your feelings and needs. This is a crucial step in personal growth and self-care. You have the power to advocate for yourself, and that’s a very strong trait. If you choose to do so, I’ll be here to help you prepare and process any outcomes. What do you think about considering this option, even if it’s scary?
+
+Seeker: I’ll try to think about it more. I’m just really scared they won’t care. It feels like too much right now, but maybe later.
+
+Supporter: I understand that this feels very challenging, and it’s okay to take it one step at a time. Take some time to reflect on your feelings and consider whether you might want to talk to your friends about this in the future. There’s no rush, and you can come back to this decision whenever you’re ready. I’ll be here to support you no matter what you choose.
+
+Seeker: Okay… thank you. I’ll think about it. I still feel sad, though. I just wish I was there with them.
+
+Supporter: It’s completely normal to feel sad when you weren’t able to participate in something you cared about. Remember that you’re not alone, and your feelings are valid. Give yourself permission to grieve the loss of that experience and to miss being with your friends. As you work through these feelings, I’m here to help you in any way I can.
+
+Seeker: Thank you... I still wish it was different. I miss being with them so much. It hurts a lot.
+
+Supporter: I see how much this is hurting you, and I wish things could be different too. But it’s important to allow yourself to feel the pain of these experiences so that you can heal and move forward. Your feelings are a sign of how much you care, and that’s a beautiful thing. Don’t be afraid to lean on those who love you during this time, and know that it’s okay to take as much time as you need to recover.
+
+Seeker: I’ll try, but it’s really hard. I just feel left out and like I don’t matter right now. I don’t want to feel this way.
+
+Supporter: It’s absolutely okay to feel left out and unimportant when you’re going through something like this. These feelings are a natural response to the circumstances you’ve described. However, it’s also important to recognize that you are valuable and that your feelings are significant. It might help to write down your thoughts and feelings, which can sometimes make them easier to understand and manage. Would you like to try writing about what you’re experiencing, or do you have other ideas for coping with these feelings?
+
+Seeker: I don’t know... maybe writing could help. It’s hard to explain how I feel, though. I just know I really miss being with them. I feel really small right now.
+
+Supporter: Writing can be a powerful tool for processing and understanding your feelings. It doesn’t have to be perfect or even make sense to anyone else—it’s for you. Just start by putting your feelings down on paper, and let the words flow however they will. Sometimes getting things out of your head and onto paper can bring clarity and comfort. Would you like to give it a try, even if it feels difficult at first?
+
+Seeker: I think I can try. It might help a little. I just want to feel better and not so alone. I’ll write about missing them and the project.
+
+Supporter: That’s a great start. Writing about your missing and the project can help you sort out your feelings and give you a sense of connection even when you’re apart. Remember, there’s no rush, and it’s okay to take breaks and return to your writing when you’re ready. It’s a process, and each word you write brings you closer to understanding and moving forward. I’m here to support you in any way I can.
+
+Seeker: I’ll try writing. I’m still sad and miss them. Thanks for talking.

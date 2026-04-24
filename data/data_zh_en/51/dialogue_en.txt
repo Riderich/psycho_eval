@@ -1,0 +1,47 @@
+Supporter: assistant: Hello! How can I assist you today?
+
+Seeker: Lately, I’ve been feeling overwhelmed by everything—work, family, aging parents. I’m juggling so much, but no matter how hard I try, I feel like I'm failing everyone.
+
+Supporter: It sounds like you're under a lot of stress. Can you tell me more about how these feelings started and if there's anything specific that triggered this sense of failure?
+
+Seeker: I think it’s been building for years, honestly. But recently, missing an important deadline at work really shook me. It felt like proof I can’t keep it all together.
+
+Supporter: Missing a deadline can be a significant stressor. How have you been managing your workload before this incident, and do you think it contributed to this feeling of being overwhelmed?
+
+Seeker: I’ve been managing by working late, making endless to-do lists, and trying to stay on top of everything. But honestly, it feels like I’m constantly spinning my wheels.
+
+Supporter: It seems like you've been putting in a lot of effort to keep up with your responsibilities. Have you considered delegating tasks or taking a break to reassess your priorities?
+
+Seeker: I’ve thought about delegating, but it’s hard. I feel like if I don’t handle things myself, they won’t get done right. And taking a break feels impossible right now.
+
+Supporter: Feeling responsible for everything and finding it hard to delegate can lead to burnout. Let’s look at the bigger picture. What are some of your long-term goals, and do you think your current approach aligns with achieving those goals?
+
+Seeker: I want to be a dependable father and husband, advance in my career, and support my parents. But right now, I’m just treading water and not making real progress on any front.
+
+Supporter: It's clear that you have many important roles and aspirations. To help you make progress, let’s start by breaking down each area—career, family, and supporting your parents—into smaller, manageable steps. Which of these areas do you think could benefit most from a focused approach right now?
+
+Seeker: Family, probably. I feel like I’m there physically, but my mind is always somewhere else—work, deadlines, or just worrying about what I’ve left undone. It’s not fair to them.
+
+Supporter: Focusing on family sounds like a good starting point. Can you think of a specific way you can improve your presence and engagement with your family without compromising your other commitments?
+
+Seeker: Maybe setting boundaries with work—like no emails after dinner—could help. But honestly, I worry I’ll fall behind even more if I disconnect, and that stresses me out.
+
+Supporter: Setting boundaries is a great idea. However, it’s normal to feel some anxiety when changing habits. How about starting with a small test run, like a trial period where you disconnect after dinner, and see how it affects your stress levels and your family time?
+
+Seeker: That sounds doable, I think. A trial feels less risky. I’d like to believe I can balance it better, but I’ve been here before, and I’m afraid of slipping back.
+
+Supporter: Taking a trial run is definitely a step in the right direction. It’s okay to be cautious; it shows you’re aware of potential challenges. As we move forward, we can explore strategies to help you maintain these new habits and cope with any setbacks. For now, what would you say if I asked you to commit to giving this trial a chance?
+
+Seeker: I’d say I’m willing to try, but I’d need to remind myself it’s okay to take small steps. I just hope I can stick with it.
+
+Supporter: It's a positive step to acknowledge your willingness to try and remind yourself to take it one day at a time. If you ever find yourself struggling to stick with your plan, remember that it's okay to adjust and be kind to yourself. We can continue to work on this together as needed. So, what’s the next action you plan to take towards setting those boundaries?
+
+Seeker: I’ll start by setting my phone aside after dinner tonight—no work emails, just time with my family. I’ll see how it feels and go from there.
+
+Supporter: That’s a solid plan! Starting with a simple change like this can have a big impact on your overall well-being. Take note of how you feel during and after your dinner time without checking work emails. Tomorrow, we can discuss how this experiment went and what you might want to adjust. Good luck, and I look forward to hearing your experience.
+
+Seeker: Thank you. I’ll give it a try and see how it goes. It’s a little nerve-wracking, but I appreciate having a starting point. I’ll let you know how it works out.
+
+Supporter: You’re very welcome. It’s completely normal to feel a bit nervous about new changes, but having a starting point is a huge step forward. Remember, every small success counts, and we can build from there. Looking forward to your update. Take care and enjoy your time with your family.
+
+Seeker: Thanks. I’ll do my best. It helps to have someone to bounce this off of. I’ll let you know how it goes next time.
