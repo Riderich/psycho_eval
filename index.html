@@ -907,13 +907,6 @@
         .replace(/'/g, "&#39;");
     }
 
-    function shortenCriteriaLabel(text, maxLen) {
-      const s = String(text || "").replace(/\s+/g, " ").trim();
-      const limit = maxLen || 42;
-      if (s.length <= limit) return s;
-      return s.slice(0, limit - 1) + "…";
-    }
-
     function parseDialogueTurns(raw) {
       const lines = String(raw || "").split(/\r?\n/);
       const turns = [];
@@ -1142,11 +1135,11 @@
       document.getElementById('criteria3Text').textContent = criteriaValues[2];
       document.getElementById('criteria4Text').textContent = criteriaValues[3];
       document.getElementById('criteria5Text').textContent = criteriaValues[4];
-      document.getElementById('criteria1TextShort').textContent = shortenCriteriaLabel(criteriaValues[0], 40);
-      document.getElementById('criteria2TextShort').textContent = shortenCriteriaLabel(criteriaValues[1], 40);
-      document.getElementById('criteria3TextShort').textContent = shortenCriteriaLabel(criteriaValues[2], 40);
-      document.getElementById('criteria4TextShort').textContent = shortenCriteriaLabel(criteriaValues[3], 40);
-      document.getElementById('criteria5TextShort').textContent = shortenCriteriaLabel(criteriaValues[4], 40);
+      document.getElementById('criteria1TextShort').textContent = criteriaValues[0];
+      document.getElementById('criteria2TextShort').textContent = criteriaValues[1];
+      document.getElementById('criteria3TextShort').textContent = criteriaValues[2];
+      document.getElementById('criteria4TextShort').textContent = criteriaValues[3];
+      document.getElementById('criteria5TextShort').textContent = criteriaValues[4];
       // **新增：为所有李克特量表表格添加提示行**
       addLikertScaleHint('question-table');
       // 恢复已保存的回答 - 必须在填充内容后执行

@@ -544,6 +544,7 @@ body.eval-mode .container {
   min-height: 48px;
   padding: 14px 10px;
   transition: background 0.12s ease;
+  vertical-align: middle;
 }
 
 .question-table tbody tr td:not(:first-child):hover {
@@ -555,8 +556,13 @@ body.eval-mode .container {
   text-align: left;
   font-weight: 600;
   color: var(--ink);
-  min-width: 140px;
-  max-width: 320px;
+  min-width: 8rem;
+  max-width: none;
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.5;
+  vertical-align: top;
+  padding: 12px 14px;
 }
 
 .question-table input[type="radio"] {
