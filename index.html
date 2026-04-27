@@ -644,6 +644,7 @@
     let groupStartTime = 0;
     let dialogueGroups = [];
     let sortedGroupIds = [];
+    let reviseFlags = {};
 
     /**
      * 量表格：点击 1–5 整格或表头数字列即可选中（减轻点小圆圈的负担）
@@ -835,16 +836,24 @@
 
       userStates = {};
       completedGroups = {};
+      reviseFlags = {};
       (data || []).forEach(row => {
         const gid = String(row.group_id);
         userStates[gid] = mapRowToSavedData(row);
-        completedGroups[gid] = row.completion_status === "已完成";
+        reviseFlags[gid] = isNeedReviseFlag(row.need_revise);
+        completedGroups[gid] = row.completion_status === "已完成" && !reviseFlags[gid];
       });
 
       currentGroupId = findCurrentGroupId();
       const groupMap = getGroupMap();
       currentGroupData = currentGroupId ? groupMap[currentGroupId] : null;
       updateProgress();
+    }
+
+    function isNeedReviseFlag(value) {
+      if (value === true || value === 1) return true;
+      const normalized = String(value == null ? "" : value).trim().toLowerCase();
+      return normalized === "1" || normalized === "true" || normalized === "t" || normalized === "yes";
     }
 
     function getGroupMap() {
@@ -856,6 +865,9 @@
     }
 
     function findCurrentGroupId() {
+      for (const gid of sortedGroupIds) {
+        if (reviseFlags[gid]) return gid;
+      }
       for (const gid of sortedGroupIds) {
         if (userStates[gid] && !completedGroups[gid]) return gid;
       }
@@ -1088,7 +1100,8 @@
       if (!currentGroupId) return;
       showSavingIndicator("保存中...");
       const payload = buildSubmissionPayload({
-        completionStatus: completedGroups[currentGroupId] ? "已完成" : "草稿"
+        completionStatus: completedGroups[currentGroupId] ? "已完成" : "草稿",
+        needRevise: reviseFlags[currentGroupId] ? true : false
       });
       try {
         await savePayload(payload);
@@ -1147,8 +1160,9 @@
       // 更新进度显示
       updateProgress();
       // 更新界面标题
+      const reviseTag = reviseFlags[String(currentGroupId)] ? "（返工）" : "";
       document.getElementById('evaluationTitle').textContent =
-        `心理健康支持对话评估系统 - 第 ${currentGroupData.group_id} 组`;
+        `心理健康支持对话评估系统 - 第 ${currentGroupData.group_id} 组${reviseTag}`;
       groupStartTime = Date.now();
     }
 
@@ -1239,12 +1253,14 @@
 
       const payload = buildSubmissionPayload({
         completionStatus: "已完成",
-        durationSeconds: Math.max(0, Math.floor((Date.now() - groupStartTime) / 1000))
+        durationSeconds: Math.max(0, Math.floor((Date.now() - groupStartTime) / 1000)),
+        needRevise: false
       });
       try {
         await savePayload(payload);
         userStates[currentGroupId] = mapRowToSavedData(payload);
         completedGroups[currentGroupId] = true;
+        reviseFlags[currentGroupId] = false;
         updateProgress();
         await flushPendingQueue();
         loadNextGroup();
@@ -1273,7 +1289,8 @@
         p5: toNullableInt(document.querySelector('input[name="personalizedDimension5"]:checked')?.value),
         comments: document.getElementById("comments").value || "",
         completion_status: options.completionStatus || "草稿",
-        duration_seconds: options.durationSeconds == null ? null : options.durationSeconds
+        duration_seconds: options.durationSeconds == null ? null : options.durationSeconds,
+        need_revise: options.needRevise == null ? false : !!options.needRevise
       };
     }
 
