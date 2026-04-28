@@ -1,0 +1,92 @@
+[
+  {
+    "file": "supporter_evaluate\\data\\data_zh_en\\9\\dialogue_en.txt",
+    "status": "ok",
+    "src_len": 6101,
+    "dst_len": 17216
+  },
+  {
+    "file": "supporter_evaluate\\data\\data_zh_en\\15\\dialogue_en.txt",
+    "status": "ok",
+    "src_len": 4115,
+    "dst_len": 11087
+  },
+  {
+    "file": "supporter_evaluate\\data\\data_zh_en\\19\\dialogue_en.txt",
+    "status": "ok",
+    "src_len": 4730,
+    "dst_len": 12804
+  },
+  {
+    "file": "supporter_evaluate\\data\\data_zh_en\\20\\dialogue_en.txt",
+    "status": "ok",
+    "src_len": 7853,
+    "dst_len": 21859
+  },
+  {
+    "file": "supporter_evaluate\\data\\data_zh_en\\21\\dialogue_en.txt",
+    "status": "ok",
+    "src_len": 2375,
+    "dst_len": 6804
+  },
+  {
+    "file": "supporter_evaluate\\data\\data_zh_en\\27\\dialogue_en.txt",
+    "status": "ok",
+    "src_len": 1337,
+    "dst_len": 4045
+  },
+  {
+    "file": "supporter_evaluate\\data\\data_zh_en\\33\\dialogue_en.txt",
+    "status": "ok",
+    "src_len": 2018,
+    "dst_len": 5397
+  },
+  {
+    "file": "supporter_evaluate\\data\\data_zh_en\\41\\dialogue_en.txt",
+    "status": "ok",
+    "src_len": 2307,
+    "dst_len": 6893
+  },
+  {
+    "file": "supporter_evaluate\\data\\data_zh_en\\42\\dialogue_en.txt",
+    "status": "ok",
+    "src_len": 4781,
+    "dst_len": 12409
+  },
+  {
+    "file": "supporter_evaluate\\data\\data_zh_en\\46\\dialogue_en.txt",
+    "status": "ok",
+    "src_len": 1862,
+    "dst_len": 5665
+  },
+  {
+    "file": "supporter_evaluate\\data\\data_zh_en\\50\\dialogue_en.txt",
+    "status": "ok",
+    "src_len": 2302,
+    "dst_len": 6515
+  },
+  {
+    "file": "supporter_evaluate\\data\\data_zh_en\\61\\dialogue_en.txt",
+    "status": "ok",
+    "src_len": 3441,
+    "dst_len": 9986
+  },
+  {
+    "file": "supporter_evaluate\\data\\data_zh_en\\74\\dialogue_en.txt",
+    "status": "ok",
+    "src_len": 3221,
+    "dst_len": 8976
+  },
+  {
+    "file": "supporter_evaluate\\data\\data_zh_en\\75\\dialogue_en.txt",
+    "status": "ok",
+    "src_len": 4453,
+    "dst_len": 12909
+  },
+  {
+    "file": "supporter_evaluate\\data\\data_zh_en\\77\\dialogue_en.txt",
+    "status": "ok",
+    "src_len": 7398,
+    "dst_len": 23216
+  }
+]

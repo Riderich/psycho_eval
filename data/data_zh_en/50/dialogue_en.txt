@@ -1,60 +1,55 @@
-Supporter: 你好，很高兴见到你。你今天感觉怎么样？
+Supporter: Hello, nice to meet you. How are you feeling today?
 
-Seeker: 还好吧。今天有点烦，我在学校擦桌子的时候，怎么擦都擦不干净。老师说没关系，但我还是觉得不好。
+Seeker: Okay, I guess. I'm a bit upset today. When I was wiping the table at school, no matter how hard I tried, I couldn't get it clean. The teacher said it was fine, but I still felt bad about it.
 
-Supporter: 我能理解你的感受，这让你感到挫败和沮丧。你需要一些帮助吗？我可以提供一些建议来帮你解决这个问题。
+Supporter: I understand how you feel—it's frustrating and discouraging. Do you need some help? I can offer some advice to solve this problem.
 
-Seeker: 嗯，我不知道。我想擦干净，可是那些颜料弄得太难擦了。我试了好久，还是有一点没弄掉。你有什么办法吗？
+Seeker: Hmm, I don't know. I wanted to get it clean, but the paint stains were so hard to remove. I tried for a long time, but there's still a little bit left. Do you have any ideas?
 
-Supporter: 是的，我知道这种感觉很难受。你可以试试用湿布或者温水来擦拭这些颜料，看看是否会更容易清除。另外，如果还有问题，你可以向老师或家长寻求帮助。他们可能可以给你一些有用的建议。
+Supporter: Yes, I know that feeling is tough. You could try using a damp cloth or warm water to wipe the paint and see if it comes off more easily. Also, if it's still an issue, you can ask your teacher or parents for help. They might have some useful tips for you.
 
-Seeker: 我试过湿布了，可是那些颜料还是不掉。我怕老师觉得我没做好，也怕别人看我的桌子觉得很脏。我不喜欢这样。
+Seeker: I tried a damp cloth, but the paint still won't come off. I'm afraid the teacher will think I didn't do a good job, and I worry others will see my table as dirty. I don't like this.
 
-Supporter: 这听起来确实是很有挑战的问题，但请不要担心。每个人都会犯错，这是学习过程中的一部分。重要的是要努力尝试并接受自己的不足。而且，如果你觉得桌子太脏，你可以跟老师或家人讲，他们会帮助你想出更好的方法来保持桌子的清洁。
+Supporter: That does sound like a challenging problem, but please don't worry. Everyone makes mistakes—it's part of the learning process. What matters is that you try your best and accept your shortcomings. Also, if you think the table is too dirty, you can talk to your teacher or family, and they'll help you find better ways to keep it clean.
 
-Seeker: 可是我觉得别人都会比我做得好。我想让我的桌子看起来最干净，可是我总是做不好。我怕别人笑我。
+Seeker: But I feel like everyone else does better than me. I want my table to look the cleanest, but I always mess up. I'm scared others will laugh at me.
 
-Supporter: 记住，你不是唯一一个这样想的人。但是，你需要明白的是，别人的想法并不一定适用于所有人。而且每个人的成长过程也不一样。重要的是，你要相信自己，相信自己能够做得更好。而且你要知道，失败并不是什么大不了的事情，它只是成功的一个组成部分。
+Supporter: Remember, you're not the only one who feels this way. But you need to understand that other people's opinions don't apply to everyone. Everyone's growth journey is different. What's important is to believe in yourself and trust that you can do better. Also, know that failure isn't a big deal—it's just a part of success.
 
-Seeker: 我就是觉得我做不好，别人都比我厉害。我不想让人觉得我笨，可是我真的不知道该怎么办。
+Seeker: I just feel like I can't do it right, and everyone else is better than me. I don't want people to think I'm stupid, but I really don't know what to do.
 
-Supporter: 不必自责，这是一种常见的情况。不要忘记，我们都是从失败中学习成功的。每个人都有自己的优点和缺点，你只需要找到适合自己的方式来做事情，不断尝试和改善就好了。
+Supporter: Don't blame yourself—this is a common feeling. Don't forget, we all learn from failure. Everyone has strengths and weaknesses. You just need to find a way that works for you, keep trying, and improve.
 
-Seeker: 可是我还是觉得我不够好。我试了又试，可是那些颜料还是在那里。我不知道怎样才算是“够好”。
+Seeker: But I still feel like I'm not good enough. I tried and tried, but the paint is still there. I don't know what counts as "good enough."
 
-Supporter: “够好“是一个主观的概念，因人而异。不过，你可以想想你想要达到的目标是什么。如果你希望自己能够做出完美的作品，那么就需要不断练习和改进。同时也要记得，没有人是完美的，所以没有必要对自己要求太高。只要你在不断地进步和成长，那就是最重要的。
-现在，你觉得怎么样？你还需要帮助吗?
+Supporter: "Good enough" is a subjective idea that varies from person to person. But you can think about what goal you want to achieve. If you want to do a perfect job, then you need to keep practicing and improving. Also, remember that no one is perfect, so don't set the bar too high for yourself. As long as you keep making progress and growing, that's what matters. Now, how do you feel? Do you still need help?
 
-Seeker: 我不知道。我就是想让桌子干净，可是怎么擦都弄不好。我觉得自己做什么都不对。我不喜欢这种感觉。
+Seeker: I don't know. I just want the table to be clean, but I can't seem to get it right no matter what. I feel like everything I do is wrong. I don't like this feeling.
 
-Supporter: 请放心，你已经很好地完成了第一步——认识到自己的情绪。接下来，我会和你一起探索解决方案，帮助你缓解压力和焦虑，让你更加自信和满意。
+Supporter: Please rest assured—you've already done the first step well: recognizing your emotions. Next, I'll explore solutions with you to help relieve your stress and anxiety, so you can feel more confident and satisfied.
 
-Seeker: 可是我还是觉得很难。别人都能做好，为什么我就不行？我感觉自己老是差一点。
+Seeker: But I still find it hard. Others can do it well, so why can't I? I feel like I'm always falling short.
 
-Supporter: 好问题！那你有没有想过，你所说的“差一点”是指什么呢？是因为你没有掌握某些技巧或技能吗？如果是这样的话，你可以考虑去网上搜索相关的视频或教程，然后跟着学一遍，也可以找同学或老师帮忙看看。
+Supporter: Great question! Have you thought about what exactly "falling short" means to you? Is it because you haven't mastered certain skills or techniques? If so, you could search for relevant videos or tutorials online and follow along, or ask a classmate or teacher for help.
 
-Seeker: 嗯，我不知道，就是擦不干净。我试了很久，可是还是有颜料留在那里。我觉得自己做事情总是不好，别人会看不起我。
+Seeker: Hmm, I don't know—I just can't get it clean. I tried for a long time, but there's still paint left. I feel like I'm always bad at things, and others will look down on me.
 
-Supporter: 看不起你是不会的，但你需要注意的是，我们都需要时间去学习和成长。而且你也不是一个人，很多成年人也需要不断地学习新知识和技能才能更好地适应工作和生活。因此，你不需要觉得自己比别人弱，只要你愿意努力学习和尝试，就一定会取得进步的。
+Supporter: They won't look down on you, but you need to realize that we all need time to learn and grow. And you're not alone—even many adults have to keep learning new knowledge and skills to adapt to work and life. So you don't need to feel inferior to others. As long as you're willing to work hard and keep trying, you'll definitely make progress.
 
-Seeker: 可是我总觉得别人比我快，比我好。我擦得慢，还擦不干净，我怕老师和同学觉得我没用。我不想让他们那样想我。
+Seeker: But I always feel like others are faster and better than me. I'm slow at wiping and can't get it clean, and I'm afraid the teacher and classmates will think I'm useless. I don't want them to think that way about me.
 
-Supporter: 有时候我们会觉得自己不如别人，但这并不代表你不行。每个人都是独一无二的，你有你的长处，也有你的短处。重要的是你能够意识到自己的价值和贡献，并且积极地去发掘自己的潜力。
-你做的不错，因为你不放弃，还在尝试解决问题。这是一个非常重要的品质。当你遇到困难时，不要轻易放弃，而是要继续努力。你会发现，每一次尝试都是一次成长的机会。
-最后，请问你还需要我为你服务吗？
+Supporter: Sometimes we feel like we're not as good as others, but that doesn't mean you're not capable. Everyone is unique—you have your strengths and weaknesses. What's important is that you recognize your own value and contributions, and actively explore your potential. You've done well because you're not giving up—you're still trying to solve the problem. That's a very important quality. When you face difficulties, don't give up easily; keep working hard. You'll find that every attempt is an opportunity to grow. Finally, do you still need my help?
 
-Seeker: 嗯，我不知道。我还是觉得擦不好，就像我做什么都不够好。谢谢你跟我说这些，但我还是有点难受。
+Seeker: Hmm, I don't know. I still feel like I can't clean it well, like nothing I do is good enough. Thank you for saying all this, but I still feel a bit down.
 
-Supporter: 爱莫能助，我只能帮助你到达终点。但真正实现目标还要靠你自己。记住，无论何时何地，你都可以学习、成长和改变。别忘了，你会变得更好的。加油！
+Supporter: I can only do so much—I can help you get to the finish line, but achieving the goal ultimately depends on you. Remember, no matter when or where, you can learn, grow, and change. Don't forget, you will get better. Keep it up!
 
-Seeker: 但我还是觉得很难。我不想一直做不好，可是我不知道怎么才能变好。我真的不喜欢这种感觉。
+Seeker: But I still find it hard. I don't want to keep messing up, but I don't know how to improve. I really don't like this feeling.
 
-Supporter: 现在你知道了自己的情绪，也找到了一些解决方案。下一步是把这些方法应用到实际生活中，慢慢地提高自己的能力。你可以先从小的任务开始，一步步地建立自信心，然后再慢慢地增加难度。同时，也不要忘记对自己的肯定和鼓励，你已经在朝着正确的方向迈进，这就足够了。
-你怎么看？你还会再继续跟我聊天吗？
+Supporter: Now you're aware of your emotions and have found some solutions. The next step is to apply these methods in real life, gradually improving your skills. You can start with small tasks, build up your confidence step by step, and then slowly increase the difficulty. Also, don't forget to affirm and encourage yourself—you're already moving in the right direction, and that's enough. What do you think? Would you like to continue chatting with me?
 
-Seeker: 我不知道。谢谢你跟我说这些，可是我还是觉得有点不好。我会试试，但我不知道能不能真的变好。
+Seeker: I don't know. Thank you for saying all this, but I still feel a bit off. I'll try, but I'm not sure if I can really get better.
 
-Supporter: 我们都有这样的时刻，但是这并不意味着你不能变得更好。只要你愿意花时间和精力去做，你就可以做到。记住每次尝试都是一种成长，只要你持续地学习和实践，你就会越来越好的。
-好了，这就是我们的对话，感谢你和我分享你的故事。祝你好运！
+Supporter: We all have moments like this, but that doesn't mean you can't improve. As long as you're willing to put in the time and effort, you can do it. Remember, every attempt is a chance to grow. As long as you keep learning and practicing, you'll get better and better. Alright, that's our conversation. Thank you for sharing your story with me. Good luck!
 
-Seeker: 嗯，谢谢你。我会试试的，但我还是有点怕。我希望我能做得更好。再见。
+Seeker: Hmm, thank you. I'll try, but I'm still a bit scared. I hope I can do better. Goodbye.
