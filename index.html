@@ -50,7 +50,7 @@
         4 = sufficient evidence (mostly strong)<br>
         5 = strong evidence (consistent, stable, few obvious flaws)</p>
         <p><strong>Mindset</strong>: score cautiously like a clinical supervisor—do not inflate scores just because the tone is warm, the chat is long, or there are many suggestions.</p>
-        <p>💡 By default the dialogue shows Chinese (AI translation) with English underneath. English is the original language of record; if meaning is unclear, defer to English before scoring.</p>
+        <p>💡 The dialogue view is English-only. Score strictly based on the English transcript shown in the evaluation panel.</p>
       </div>
       <div class="instructions-section">
         <h2>📊 Dimensions</h2>
@@ -115,7 +115,7 @@
       <div class="evaluation-section eval-inline-guide" id="evalSessionGuide">
         <p><strong>Scoring guide for this session (read first)</strong></p>
         <ol style="margin:8px 0 0 18px;padding:0;">
-          <li>By default read <strong>Chinese</strong> (AI translation) first, then <strong>English</strong> underneath. English is the source language; Chinese is machine-translated—if wording is ambiguous or inconsistent, defer to English. You can switch to “English only” or “Chinese only.”</li>
+          <li>This interface is <strong>English-only</strong>. Use the English transcript as the sole source for scoring.</li>
           <li>Follow the flow: <strong>evidence → stability → score</strong>. Start from a 3 baseline, then adjust with evidence.</li>
           <li>If unsure, prioritize: <strong>safety & respect → fit to the Seeker’s needs → actionable next steps</strong>.</li>
           <li>Dimensions differ in strictness: <strong>safety</strong> uses a lenient default (no attack / no invalidating distress / no dangerous advice → usually higher scores).</li>
@@ -128,26 +128,9 @@
         <h3 class="dialogue-header">Dialogue</h3>
         <div id="dialogueEnNotice" class="dialogue-en-notice hidden" role="status"></div>
         <div class="language-tabs dialogue-tabs">
-          <div class="language-tab active" onclick="switchLanguage('dialogue', 'stack')">Chinese & English</div>
-          <div class="language-tab" onclick="switchLanguage('dialogue', 'en')">English only</div>
-          <div class="language-tab" onclick="switchLanguage('dialogue', 'zh')">Chinese only</div>
+          <div class="language-tab active">English only</div>
         </div>
-        <div id="dialogueViewStacked" class="dialogue-content">
-          <div class="dialogue-stack">
-            <div class="dialogue-stack-block">
-              <p class="dialogue-col-title">Chinese (AI translation)</p>
-              <div class="dialogue-bubble-wrap" id="dialogueBubblesZhStack"></div>
-            </div>
-            <div class="dialogue-stack-block">
-              <p class="dialogue-col-title">English (original)</p>
-              <div class="dialogue-bubble-wrap" id="dialogueBubblesEnStack"></div>
-            </div>
-          </div>
-        </div>
-        <div id="dialogueViewZh" class="dialogue-content hidden">
-          <div class="dialogue-bubble-wrap" id="dialogueBubblesZhOnly"></div>
-        </div>
-        <div id="dialogueViewEn" class="dialogue-content hidden">
+        <div id="dialogueViewEn" class="dialogue-content">
           <div class="dialogue-bubble-wrap" id="dialogueBubblesEnOnly"></div>
         </div>
           </div>
@@ -1029,21 +1012,13 @@
       container.innerHTML = html || `<div class="dialogue-bubble-row seeker"><div class="dialogue-bubble">(No dialogue text)</div></div>`;
     }
 
-    function classifyEnglishDialogue(zh, en) {
-      const z = String(zh || "").trim();
+    function classifyEnglishDialogue(en) {
       const e = String(en || "").trim();
       if (!e) {
         return {
           mode: "empty",
-          message: "English column: dialogue_en.txt was loaded but is empty. The stacked view leaves the English pane blank; “English only” falls back to Chinese dialogue.",
-          bilingualPlaceholder: "dialogue_en.txt is empty—no English bubbles for this group."
-        };
-      }
-      if (e === z) {
-        return {
-          mode: "same",
-          message: "English column: dialogue_en.txt is identical to the Chinese translation—no separate English transcript may be provided.",
-          bilingualPlaceholder: "English file matches Chinese; the English pane is omitted to avoid duplication."
+          message: "dialogue_en.txt was loaded but is empty.",
+          bilingualPlaceholder: "dialogue_en.txt is empty for this group."
         };
       }
       const probe = e.slice(0, Math.min(2400, e.length));
@@ -1053,8 +1028,8 @@
       if (!looksEnglish) {
         return {
           mode: "not_english",
-          message: "English column: dialogue_en.txt is mostly Chinese characters and does not look like English. The stacked view omits English bubbles—verify the file or use “Chinese only.”",
-          bilingualPlaceholder: "Content does not look like English; omitted to avoid duplicating Chinese above."
+          message: "dialogue_en.txt is mostly non-English content.",
+          bilingualPlaceholder: "Content does not look like English. Please verify dialogue_en.txt."
         };
       }
       return { mode: "ok", message: "", bilingualPlaceholder: "" };
@@ -1081,61 +1056,22 @@
         "</div>";
     }
 
-    function renderEnOnlyView(zh, en, classification) {
+    function renderEnOnlyView(en, classification) {
       var wrap = document.getElementById("dialogueBubblesEnOnly");
       if (!wrap) return;
       if (classification.mode === "ok") {
         renderDialogueBubbles(wrap, en, { supporter: "Supporter", seeker: "Seeker" });
         return;
       }
-      if (classification.mode === "not_english") {
-        renderEnglishColumnPlaceholder(wrap, classification.bilingualPlaceholder);
-        return;
-      }
-      var bannerText =
-        classification.mode === "empty"
-          ? "No separate English dialogue (dialogue_en.txt is empty). Chinese dialogue is shown so you can keep reading under “English only.”"
-          : "English file matches Chinese—no separate English version. The same Chinese dialogue is shown below.";
-      wrap.innerHTML =
-        '<div class="dialogue-en-fallback-banner">' + escapeHtml(bannerText) + "</div>" +
-        '<div class="dialogue-bubble-scroll-host"></div>';
-      var host = wrap.querySelector(".dialogue-bubble-scroll-host");
-      renderDialogueBubbles(host, zh, { supporter: "Supporter", seeker: "Seeker" });
+      renderEnglishColumnPlaceholder(wrap, classification.bilingualPlaceholder);
     }
 
     function renderAllDialogueViews() {
-      var zh = currentGroupData.dialogue_zh || "";
       var en = currentGroupData.dialogue_en || "";
-      var classification = classifyEnglishDialogue(zh, en);
+      var classification = classifyEnglishDialogue(en);
       currentGroupData._dialogueEnClassification = classification;
       renderDialogueEnNotice(classification);
-
-      renderDialogueBubbles(document.getElementById("dialogueBubblesZhStack"), zh, { supporter: "Supporter", seeker: "Seeker" });
-      var enStack = document.getElementById("dialogueBubblesEnStack");
-      if (classification.mode === "ok") {
-        renderDialogueBubbles(enStack, en, { supporter: "Supporter", seeker: "Seeker" });
-      } else {
-        renderEnglishColumnPlaceholder(enStack, classification.bilingualPlaceholder);
-      }
-
-      renderDialogueBubbles(document.getElementById("dialogueBubblesZhOnly"), zh, { supporter: "Supporter", seeker: "Seeker" });
-      renderEnOnlyView(zh, en, classification);
-    }
-
-    function setDialogueView(mode) {
-      const stacked = document.getElementById("dialogueViewStacked");
-      const zhOnly = document.getElementById("dialogueViewZh");
-      const enOnly = document.getElementById("dialogueViewEn");
-      stacked.classList.add("hidden");
-      zhOnly.classList.add("hidden");
-      enOnly.classList.add("hidden");
-      if (mode === "zh") {
-        zhOnly.classList.remove("hidden");
-      } else if (mode === "en") {
-        enOnly.classList.remove("hidden");
-      } else {
-        stacked.classList.remove("hidden");
-      }
+      renderEnOnlyView(en, classification);
     }
 
     function mapRowToSavedData(row) {
@@ -1198,8 +1134,6 @@
       document.getElementById('evaluationContainer').classList.remove('hidden');
       // 填充内容（默认显示中文）
       renderAllDialogueViews();
-      setDialogueView("stack");
-      updateTabStatus("dialogue", "stack");
       // 个性化维度：始终以本组目录 criteria.txt 解析出的 5 条细则为准
       const criteriaValues = getCriteriaLinesFromSample();
       renderAgeSpecificGuidance();
@@ -1266,33 +1200,6 @@
       });
     }
 
-
-    // 语言切换功能
-    function switchLanguage(section, language) {
-      if (section === 'dialogue') {
-        if (language === 'zh') {
-          setDialogueView("zh");
-        } else if (language === 'en') {
-          setDialogueView("en");
-        } else {
-          setDialogueView("stack");
-        }
-        updateTabStatus('dialogue', language);
-      }
-    }
-
-    // 更新标签状态函数
-    function updateTabStatus(section, language) {
-      // 获取对应部分的所有标签
-      var tabs = document.querySelectorAll(`.${section}-tabs .language-tab`);
-      // 移除所有活动标签
-      tabs.forEach(tab => tab.classList.remove('active'));
-      // 激活选中的标签
-      var tabIndex = language === 'stack' ? 0 : language === 'en' ? 1 : 2;
-      if (tabs[tabIndex]) {
-        tabs[tabIndex].classList.add('active');
-      }
-    }
 
     // 完成当前组评估
     async function completeCurrentGroup() {
@@ -1424,8 +1331,7 @@
       });
       // 隐藏评估界面，显示第一阶段界面
       document.getElementById('evaluationContainer').classList.add('hidden');
-      // 重置语言选项卡到中英对照
-      switchLanguage('dialogue', 'stack');
+      // English-only dialogue mode, no language tab reset needed.
     }
 
     // 显示完成消息
