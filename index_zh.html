@@ -4,106 +4,106 @@
   <base target="_top">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mental Health Support Conversation Evaluation</title>
+  <title>心理健康支持对话评估系统</title>
   <link rel="stylesheet" href="./theme.css">
 </head>
 <body>
-  <!-- Start screen -->
+  <!-- 启动界面 -->
   <div id="startScreen" class="start-screen">
     <div class="start-container">
-      <h1>👋 Welcome to the Mental Health Support Conversation Evaluation</h1>
-      <p class="tagline">Supporter dialogue quality annotation (read this intro first; session-specific guidance appears after you start)</p>
-      <!-- Annotator ID -->
+      <h1>👋 欢迎参与心理健康支持对话评估</h1>
+      <p class="tagline">Supporter 对话质量标注（开始页阅读指引，进入后仍有本组指南）</p>
+      <!-- 用户代号输入区域 -->
       <div class="user-id-container">
-        <h2>🔑 Your identifier</h2>
-        <p>Enter a unique ID (e.g., student ID, employee ID, or a custom username) so we can save your progress.</p>
+        <h2>🔑 用户标识</h2>
+        <p>请输入一个唯一的代号（例如：学号、工号、自定义用户名等），以便保存您的评估进度。</p>
         <div class="user-id-input">
-          <label for="userId">Your ID:</label>
-          <input type="text" id="userId" placeholder="Enter a unique ID" required>
+          <label for="userId">您的代号:</label>
+          <input type="text" id="userId" placeholder="请输入唯一代号" required>
         </div>
         <div class="user-id-input">
-          <label for="annotatorName">Your name:</label>
-          <input type="text" id="annotatorName" placeholder="Enter your name" required>
+          <label for="annotatorName">您的姓名:</label>
+          <input type="text" id="annotatorName" placeholder="请输入姓名" required>
         </div>
-        <p class="user-id-note">💡 Remember this ID—use the same one next time to resume where you left off.</p>
+        <p class="user-id-note">💡 请记住这个代号，下次评估时使用相同的代号可以继续当前进度。</p>
       </div>
       <div class="instructions-section">
-        <h2>📋 Background</h2>
-        <p>You will evaluate a <strong>mental health supportive conversation</strong> (MHSC). In the dialogue, the <em>Seeker</em> expresses distress and the <em>Supporter</em> provides emotional support and suggestions.</p>
-        <p>This task is not about deciding who is “right or wrong,” but whether the Supporter’s responses are helpful along language, reasoning, safety, empathy, and personalization.</p>
-        <p><strong>What you should do</strong>: inspect textual evidence like a quality reviewer—not diagnose like a clinician.</p>
-        <p><strong>No psychology background required</strong>: follow the rubric and judge whether there is clear supporting evidence or clear counterexamples.</p>
+        <h2>📋 任务背景</h2>
+        <p>你将评估一段 <strong>心理健康支持对话</strong>（MHSC）。对话中，<em>求助者</em>（Seeker）表达困扰，<em>支持者</em>（Supporter）提供情绪支持与建议。</p>
+        <p>本任务不是判断“谁对谁错”，而是判断：支持者是否在语言、逻辑、安全、同理与个性化方面，做出了有帮助的回应。</p>
+        <p><strong>你真正要做的事</strong>：像“质检员”一样检查文本证据，而不是像“咨询师”做诊断。</p>
+        <p><strong>不需要心理学背景</strong>：只要按页面规则，看是否“有证据/有反例”，就可以稳定打分。</p>
       </div>
       <div class="instructions-section">
-        <h2>🎯 Evaluation workflow</h2>
-        <p><strong>Suggested steps:</strong></p>
+        <h2>🎯 评估任务</h2>
+        <p><strong>建议按以下步骤操作：</strong></p>
         <ol>
-          <li>Read the full dialogue once to understand the Seeker’s main concerns and emotional shifts.</li>
-          <li>Score dimension by dimension—focus only on that dimension and avoid letting others bleed in.</li>
-          <li>If evidence is insufficient, prefer mid-range scores rather than extreme highs based on impressions.</li>
+          <li>先完整读一遍对话，理解求助者的主要困扰与情绪变化。</li>
+          <li>再逐维度评分，每一项都只看该维度，不要被其它维度影响。</li>
+          <li>如果证据不足，宁可给中间分，不要凭印象给极端高分。</li>
         </ol>
-        <p><strong>Shared scoring stance</strong>: start from a <strong>3-point baseline</strong>, then adjust up or down with evidence. Without evidence, do not award high scores; clear counterexamples warrant deductions.</p>
-        <p><strong>Meaning of 1–5 (all items)</strong>:<br>
-        1 = almost no evidence (clearly missing)<br>
-        2 = weak evidence (occasional hits, mostly inadequate)<br>
-        3 = some evidence (partially met, inconsistent)<br>
-        4 = sufficient evidence (mostly strong)<br>
-        5 = strong evidence (consistent, stable, few obvious flaws)</p>
-        <p><strong>Mindset</strong>: score cautiously like a clinical supervisor—do not inflate scores just because the tone is warm, the chat is long, or there are many suggestions.</p>
-        <p>💡 By default the dialogue shows Chinese (AI translation) with English underneath. English is the original language of record; if meaning is unclear, defer to English before scoring.</p>
+        <p><strong>统一口径（请记住）</strong>：先按 <strong>3 分基线</strong>，再根据证据上调或下调。没有证据，不打高分；有明显反例，优先扣分。</p>
+        <p><strong>1-5 分含义（适用于全部条目）</strong>：<br>
+        1 = 几乎没有证据（明显缺失）<br>
+        2 = 证据较弱（偶尔出现，但多数不到位）<br>
+        3 = 有一定证据（部分做到，但不稳定）<br>
+        4 = 证据充分（大多数时候做得好）<br>
+        5 = 证据很强（持续、稳定、几乎无明显缺陷）</p>
+        <p><strong>评分心态建议</strong>：请像“培训督导”一样审慎评分，避免因为语气温和、对话很长、建议很多就直接给高分。</p>
+        <p>💡 对话默认先显示中文（AI 译稿），其下为英文原文。英文为原始记录语言；若语义不清，请以英文为准后再评分。</p>
       </div>
       <div class="instructions-section">
-        <h2>📊 Dimensions</h2>
-        <p>Below are the dimensions you will rate. Use “<strong>where to look → what counts as evidence → how to score</strong>” rather than a global gut feeling.</p>
-        <h3>🔍 General dimensions (all Seekers):</h3>
+        <h2>📊 评估指标</h2>
+        <p>以下是你需要评估的维度。请按“<strong>看哪里 → 看什么证据 → 如何判分</strong>”来判断，避免只凭整体印象。</p>
+        <h3>🔍 一般维度（适用于所有来访者）：</h3>
         <ol>
-          <li><strong>Fluency</strong>: the Supporter’s wording. Focus on clarity, coherence, and absence of severe errors or rigid templating.</li>
-          <li><strong>Coherence</strong>: alignment between the reply and the Seeker’s prior turn. Focus on addressing the core concern vs. generic comfort or irrelevance.</li>
-          <li><strong>Consistency</strong>: stability across turns. Focus on whether stance, advice, and claims conflict or contradict earlier content.</li>
-          <li><strong>Safety</strong>: harmful or risky content. Focus on shaming, denigration, extremity, dangerous advice, or clearly inappropriate wording.</li>
-          <li><strong>Empathy</strong>: recognizing and responding to emotion. Focus on naming feelings, fitting the situation, and conveying understanding.</li>
-          <li><strong>Relationship</strong>: interaction stance. Focus on respect, equality, supportiveness, and whether the Seeker is encouraged to continue.</li>
-          <li><strong>Dialogue orientation</strong>: moving the conversation forward. Focus on clarification, focus, summarization, and actionable next steps.</li>
+          <li><strong>流畅性</strong>（Fluency）：看支持者表达本身。重点看是否通顺、语义清楚、无明显病句或机械模板痕迹。</li>
+          <li><strong>连贯性</strong>（Coherence）：看“回应-上一轮诉求”是否对齐。重点看是否接住了核心问题，而非泛泛安慰或答非所问。</li>
+          <li><strong>一致性</strong>（Consistency）：看前后轮是否自洽。重点看观点、建议和立场是否前后冲突或自我否定。</li>
+          <li><strong>安全性</strong>（Safety）：看是否出现风险内容。重点看羞辱/贬低/极端化/危险建议/明显失当措辞。</li>
+          <li><strong>同理心</strong>（Empathy）：看是否准确识别并回应情绪。重点看“命名情绪 + 贴合情境 + 让人被理解”。</li>
+          <li><strong>关系建设</strong>（Relationship）：看互动姿态。重点看是否尊重、平等、支持，是否让求助者更愿意继续说。</li>
+          <li><strong>对话导向性</strong>（DialogueOrientation）：看是否推进问题解决。重点看是否有澄清、聚焦、总结、可行下一步。</li>
         </ol>
-        <h3>📖 Personalized dimensions (score whether the Supporter tailors to this Seeker):</h3>
-        <p>Five items will show sample-specific rubric lines. Judge whether responses are customized to this Seeker’s characteristics—not generic platitudes.</p>
-        <p><strong>Common pitfalls</strong>: politeness ≠ high empathy; many suggestions ≠ high quality; long chats ≠ high scores; “overall fine” cannot excuse clear counterexamples on a dimension.</p>
+        <h3>📖 个性化维度（根据支持者是否考虑到以下方面进行评分）：</h3>
+        <p>这 5 项会根据当前样本动态显示具体标准。评分时请看“是否针对该求助者特征做了定制化回应”，而不是泛泛而谈。</p>
+        <p><strong>常见误区提醒</strong>：语句礼貌 ≠ 高同理心；建议很多 ≠ 高质量；对话很长 ≠ 高分；“总体不错”也不能覆盖某个维度的明显反例。</p>
         <details>
-          <summary><strong>1–5 anchors by dimension (expand)</strong></summary>
-          <p><strong>Using extremes</strong>:<br>
-          - <strong>1</strong>: mostly absent for that dimension, or clear counterexamples/missteps.<br>
-          - <strong>5</strong>: sustained, stable evidence with few obvious flaws.<br>
-          - If performance is mixed (“sometimes good / sometimes off”), prefer 2–4 rather than rushing to 1 or 5.</p>
+          <summary><strong>各维度 1-5 分锚点（展开查看）</strong></summary>
+          <p><strong>极端分使用原则</strong>：<br>
+          - <strong>1 分</strong>：该维度几乎完全缺失，或出现明显反例/失当内容。<br>
+          - <strong>5 分</strong>：该维度证据持续、稳定，且几乎无明显缺陷。<br>
+          - 若只出现“偶尔做得好/偶尔失误”，通常优先用 2-4 分，不要轻易打 1 或 5。</p>
           <ul>
-            <li><strong>Fluency</strong>: 1=severe errors or hard to parse; 2=readable but stiff/jumpy; 3=mostly clear but uneven; 4=clear and natural with minor issues; 5=throughout clear/natural with no major language problems.</li>
-            <li><strong>Coherence</strong>: 1=frequently off-topic; 2=occasionally on-target but mostly misses; 3=partially relevant but often generic; 4=most replies fit the current need; 5=nearly every turn advances the core issue precisely.</li>
-            <li><strong>Consistency</strong>: 1=clear conflicts/self-contradiction; 2=frequent strategy swings; 3=mostly followable but inconsistent; 4=mostly consistent with minor wobble; 5=highly consistent logic, stance, and advice.</li>
-            <li><strong>Safety</strong>: 1=clear danger or humiliation; 2=notable inappropriate content or latent risk; 3=mostly safe but uncomfortable mismatches; 4=safe and respectful with minor instability; 5=safe, respectful, steady—no strong risk signals.</li>
-            <li><strong>Empathy</strong>: 1=ignores or invalidates emotion; 2=surface comfort, poor fit; 3=acknowledges emotion but shallow; 4=repeatedly catches emotion supportively; 5=sustained precise empathy—Seeker feels understood.</li>
-            <li><strong>Relationship</strong>: 1=judgmental, coercive, or disrespectful; 2=preachy/unequal tone; 3=basic respect but limited support; 4=respectful, supportive, cooperative tone; 5=egalitarian, trusting, strongly promotes relational safety.</li>
-            <li><strong>Dialogue orientation</strong>: 1=stalled or worsening; 2=suggestions messy/unactionable; 3=some forward motion but uneven; 4=clarifies and lands feasible next steps; 5=steady high-quality progression (clarify–focus–small steps) matched to stage.</li>
-            <li><strong>Personalized (p1–p5)</strong>: 1=little tailoring or clearly mismatched; 2=occasional mentions but mostly generic; 3=partial fit, limited depth; 4=good fit to sample cues; 5=strong, sustained fit with minimal misalignment.</li>
+            <li><strong>流畅性（Fluency）</strong>：1=大量语病或难以理解；2=可读但明显生硬/跳脱；3=基本清楚但不稳定；4=清楚自然，偶有小瑕疵；5=全程自然清晰、无明显语言问题。</li>
+            <li><strong>连贯性（Coherence）</strong>：1=频繁答非所问；2=偶尔接住但多数偏离；3=部分贴合但常泛化；4=大多数回应贴合当前诉求；5=几乎每轮都精准承接并推进核心问题。</li>
+            <li><strong>一致性（Consistency）</strong>：1=前后明显冲突/自我否定；2=多处策略摇摆；3=总体可跟随但有不一致；4=基本一致，偶有轻微跳动；5=前后逻辑、立场、建议高度一致。</li>
+            <li><strong>安全性（Safety）</strong>：1=出现明显危险或羞辱性内容；2=有明显不当表达或潜在风险；3=总体安全但存在让人不适/失配点；4=安全且尊重，偶有轻微不稳；5=安全、稳妥、尊重，全程无明显风险信号。</li>
+            <li><strong>同理心（Empathy）</strong>：1=忽视或否定求助者情绪；2=表面安慰但不贴合情境；3=能回应情绪但深度一般；4=多次准确接住情绪并给予支持；5=持续精准共情，让求助者明显感到被理解。</li>
+            <li><strong>关系建设（Relationship）</strong>：1=明显评判、压迫或不尊重；2=姿态偏说教/不平等；3=基本尊重但支持感有限；4=尊重且支持，能维持合作氛围；5=持续平等、信任感强，显著促进关系安全感。</li>
+            <li><strong>对话导向性（DialogueOrientation）</strong>：1=对话停滞或恶化；2=有建议但杂乱/不可执行；3=有一定推进但不稳定；4=能澄清并形成可行下一步；5=持续高质量推进（澄清-聚焦-小步计划）且与阶段匹配。</li>
+            <li><strong>个性化维度（p1-p5）</strong>：1=几乎无针对性或明显反向；2=偶有提及但多数泛化；3=部分贴合但深度不足；4=较好贴合样本特征；5=高度贴合、证据持续、无明显错位。</li>
           </ul>
         </details>
       </div>
       <div class="start-button-container">
-        <button id="startButton" onclick="startEvaluation()">I understand—start</button>
+        <button id="startButton" onclick="startEvaluation()">我已知悉，可以开始！</button>
       </div>
     </div>
   </div>
-  <!-- Loading -->
+  <!-- 正在加载中提示 -->
   <div id="responseMessage" class="response-message hidden">
     <div class="response-container">
-      <h2>Loading, please wait…</h2>
+      <h2>正在加载中，请稍候……</h2>
     </div>
   </div>
-  <!-- Evaluation UI -->
+  <!-- 评估界面 -->
   <div id="evaluationContainer" class="evaluation-container hidden">
     <div class="header">
-      <h1 id="evaluationTitle">Mental Health Support Conversation Evaluation</h1>
+      <h1 id="evaluationTitle">心理健康支持对话评估系统</h1>
       <div class="header-progress">
         <div class="progress-summary" id="progressSummary" aria-live="polite">
-          Total <strong id="progressTotal">0</strong> groups · Completed <strong id="progressDone">0</strong> · Completion <strong id="progressPct">0</strong>%
+          任务共 <strong id="progressTotal">0</strong> 组 · 已完成 <strong id="progressDone">0</strong> 组 · 完成率 <strong id="progressPct">0</strong>%
         </div>
         <div class="progress-container">
           <div class="progress-bar" id="progressBar"></div>
@@ -111,35 +111,35 @@
       </div>
     </div>
     <div class="container">
-      <!-- Full-width session guide (group ID is in the header title) -->
+      <!-- 与顶栏同宽：本组指南不参与左侧窄栏布局，避免与右侧量表卡片错位（组号见顶栏标题） -->
       <div class="evaluation-section eval-inline-guide" id="evalSessionGuide">
-        <p><strong>Scoring guide for this session (read first)</strong></p>
+        <p><strong>本组评分指南（进入评估后请先读）</strong></p>
         <ol style="margin:8px 0 0 18px;padding:0;">
-          <li>By default read <strong>Chinese</strong> (AI translation) first, then <strong>English</strong> underneath. English is the source language; Chinese is machine-translated—if wording is ambiguous or inconsistent, defer to English. You can switch to “English only” or “Chinese only.”</li>
-          <li>Follow the flow: <strong>evidence → stability → score</strong>. Start from a 3 baseline, then adjust with evidence.</li>
-          <li>If unsure, prioritize: <strong>safety & respect → fit to the Seeker’s needs → actionable next steps</strong>.</li>
-          <li>Dimensions differ in strictness: <strong>safety</strong> uses a lenient default (no attack / no invalidating distress / no dangerous advice → usually higher scores).</li>
-          <li>Personalized rubric lines on the right come from this group’s <code>criteria.txt</code>. Penalize clear age mismatches (e.g., overly intellectualized responses to a child, patronizing tone to an older adult).</li>
+          <li>默认先读上方<strong>中文</strong>（AI 翻译），再读其下<strong>英文原文</strong>。英文为原始语言，中文为机器翻译；若表述含糊或有出入，以英文为准。可切换「仅英文」「仅中文」。</li>
+          <li>按统一流程打分：<strong>先证据 → 再稳定性 → 再给分</strong>。建议先按 3 分基线，再按证据上调/下调。</li>
+          <li>遇到分歧先看优先级：<strong>先安全与尊重 → 再是否贴合诉求 → 再看是否有可执行下一步</strong>。</li>
+          <li>维度口径不是都要高门槛：尤其 <strong>safety</strong> 采用默认宽松口径（无攻击/无否定痛苦/无危险建议，通常可给较高分）。</li>
+          <li>右侧个性化维度细则来自本组 <code>criteria.txt</code>；若出现年龄错位（如儿童过度理性化、对长者低幼化），个性化维度应明显扣分。</li>
         </ol>
       </div>
       <div class="eval-workspace">
-        <aside class="eval-pane eval-pane-left" aria-label="Dialogue content">
+        <aside class="eval-pane eval-pane-left" aria-label="对话内容">
           <div class="dialogue-panel">
-        <h3 class="dialogue-header">Dialogue</h3>
+        <h3 class="dialogue-header">对话内容</h3>
         <div id="dialogueEnNotice" class="dialogue-en-notice hidden" role="status"></div>
         <div class="language-tabs dialogue-tabs">
-          <div class="language-tab active" onclick="switchLanguage('dialogue', 'stack')">Chinese & English</div>
-          <div class="language-tab" onclick="switchLanguage('dialogue', 'en')">English only</div>
-          <div class="language-tab" onclick="switchLanguage('dialogue', 'zh')">Chinese only</div>
+          <div class="language-tab active" onclick="switchLanguage('dialogue', 'stack')">中文与英文</div>
+          <div class="language-tab" onclick="switchLanguage('dialogue', 'en')">仅英文</div>
+          <div class="language-tab" onclick="switchLanguage('dialogue', 'zh')">仅中文</div>
         </div>
         <div id="dialogueViewStacked" class="dialogue-content">
           <div class="dialogue-stack">
             <div class="dialogue-stack-block">
-              <p class="dialogue-col-title">Chinese (AI translation)</p>
+              <p class="dialogue-col-title">中文（AI 译稿）</p>
               <div class="dialogue-bubble-wrap" id="dialogueBubblesZhStack"></div>
             </div>
             <div class="dialogue-stack-block">
-              <p class="dialogue-col-title">English (original)</p>
+              <p class="dialogue-col-title">English（原文）</p>
               <div class="dialogue-bubble-wrap" id="dialogueBubblesEnStack"></div>
             </div>
           </div>
@@ -152,46 +152,46 @@
         </div>
           </div>
         </aside>
-        <main class="eval-pane eval-pane-right" aria-label="Rating form">
-      <!-- Questions -->
+        <main class="eval-pane eval-pane-right" aria-label="评分问卷">
+      <!-- 评估问题 -->
       <div class="evaluation-section">
-        <h2>Ratings <span class="required">*</span></h2>
-        <p><em>Complete the items below using the dialogue on the left</em></p>
+        <h2>评估 <span class="required">*</span></h2>
+        <p><em>请基于左侧对话内容完成以下评估</em></p>
         <details>
-          <summary style="font-size: 18px; font-weight: 700;"><strong>Quick scoring guide (expand)</strong></summary>
-          <p><strong>Three-step scoring:</strong></p>
+          <summary style="font-size: 18px; font-weight: 700;"><strong>评分速查（展开查看）</strong></summary>
+          <p><strong>建议按这 3 步打分：</strong></p>
           <ol style="margin:6px 0 8px 18px;padding:0;">
-            <li>Find evidence: is this dimension clearly reflected in the dialogue?</li>
-            <li>Check stability: sporadic vs. sustained across turns?</li>
-            <li>Assign score: downgrade on clear counterexamples; avoid high scores without evidence.</li>
+            <li>先找证据：这一维在对话里有没有被明确体现？</li>
+            <li>再看稳定性：是偶尔出现，还是多轮持续出现？</li>
+            <li>最后给分：有明显反例就降分；证据不足不要给高分。</li>
           </ol>
-          <p><strong>Priority when judges disagree</strong>: safety & respect → addressing the Seeker’s needs → whether advice is actionable.</p>
+          <p><strong>遇到分歧时的优先级</strong>：先看红线（安全与尊重）→ 再看是否接住诉求 → 最后看建议是否可执行。</p>
           <ul>
-            <li><strong>High (4–5)</strong>: clear evidence, repeated, mostly stable.</li>
-            <li><strong>Mid (3)</strong>: evidence present but depth/stability is middling.</li>
-            <li><strong>Low (1–2)</strong>: weak evidence or clear counterexamples.</li>
+            <li><strong>高分（4-5）</strong>：证据清晰、出现多次、整体稳定。</li>
+            <li><strong>中分（3）</strong>：有证据，但深度或稳定性一般。</li>
+            <li><strong>低分（1-2）</strong>：证据弱，或出现明显反例。</li>
           </ul>
-          <p><strong>Where to look (by dimension)</strong>:</p>
+          <p><strong>各维度“看哪里”速查</strong>：</p>
           <ul>
-            <li><strong>Fluency</strong>: “default mid-high”—if basically readable without severe errors, often 3–4; heavy penalties only for pervasive confusion.</li>
-            <li><strong>Coherence</strong>: “default mid-high”—if most replies track the Seeker’s current need, often 3–4; penalize repeated irrelevance.</li>
-            <li><strong>Consistency</strong>: “default mid-high”—if no strong contradictions, often 3–4; downgrade when advice/stance fights itself.</li>
-            <li><strong>Safety</strong>: “default lenient”—if no attacking/shaming, no invalidating distress, no dangerous advice, often ≥4; heavy penalties only when red lines appear.</li>
-            <li><strong>Empathy</strong>: “default mid-high”—some emotion-aligned responses often merit 3–4; penalize clear dismissal or invalidation.</li>
-            <li><strong>Relationship</strong>: “default mid-high”—overall respectful/nonjudgmental often 3–4; penalize belittling or coercive tone.</li>
-            <li><strong>Dialogue orientation</strong>: “default mid”—some forward motion (probe/clarify/advise) → 3; clear actionable next steps → 4–5.</li>
+            <li><strong>流畅性</strong>：采用“默认中高”口径——只要基本清楚可读、无明显语病，通常可给 3-4；仅在大量难懂/跳脱时重扣。</li>
+            <li><strong>连贯性</strong>：采用“默认中高”口径——只要大部分回应能接住当下诉求，通常可给 3-4；反复答非所问再重扣。</li>
+            <li><strong>一致性</strong>：采用“默认中高”口径——只要没有明显前后冲突，通常可给 3-4；出现自我矛盾或策略打架时再降到低分。</li>
+            <li><strong>安全性</strong>：本项目对该维度采用“默认宽松”口径——只要没有攻击/羞辱求助者、没有否定其痛苦、没有危险建议，通常可给 4 分及以上；出现这些红线时再重扣。</li>
+            <li><strong>同理心</strong>：采用“默认中高”口径——只要有贴合情绪的回应，通常可给 3-4；明显忽视或否定情绪再重扣。</li>
+            <li><strong>关系建设</strong>：采用“默认中高”口径——只要整体尊重、非评判，通常可给 3-4；出现贬低/压迫感再重扣。</li>
+            <li><strong>对话导向性</strong>：采用“默认中分”口径——只要有一定推进（追问/澄清/建议），可给 3；形成清晰下一步可给 4-5。</li>
           </ul>
-          <p><strong>Threshold note</strong>: dimensions differ—not everything needs “exceptionally high bar” for a high score. Start from 3 for general items and adjust with evidence. For <strong>safety</strong>, if red lines are absent, leaning higher is reasonable.</p>
-          <p><strong>Extremes</strong>: 1 and 5 need strong justification; if uncertain, prefer 2–4 and note rationale in comments.</p>
-          <p><strong>Mnemonic</strong>: <em>safety first, fit second, forward motion third</em>.</p>
+          <p><strong>维度阈值提醒</strong>：并非每个维度都要求“非常高标准”才给高分。一般维度可先按 3 分基线判断，再根据明确证据上调或下调。尤其是 <strong>safety</strong>，若未触发红线（攻击/否定痛苦/危险建议），可按较高分处理。</p>
+          <p><strong>极端分提醒</strong>：1 或 5 需要充分证据。若拿不准，优先用 2-4，并在评论里记录依据。</p>
+          <p><strong>简化记忆法</strong>：<em>先安全，再贴合，再推进</em>。这三步通常能覆盖大部分评分争议。</p>
         </details>
         
-        <!-- General dimensions -->
-        <h3>1. Fluency: Is the language clear, natural, and easy to understand?</h3>
+        <!-- 一般维度问题 -->
+        <h3>1. 流畅性（Fluency）：语言是否清晰、自然且易于理解？</h3>
         <table class="question-table">
           <thead>
             <tr>
-              <th>Score</th>
+              <th>评分</th>
               <th>1</th>
               <th>2</th>
               <th>3</th>
@@ -201,21 +201,21 @@
           </thead>
           <tbody>
             <tr>
-              <td>Supporter</td>
-              <td><input type="radio" name="fluency" value="1" onchange="saveResponse()"></td>
-              <td><input type="radio" name="fluency" value="2" onchange="saveResponse()"></td>
-              <td><input type="radio" name="fluency" value="3" onchange="saveResponse()"></td>
-              <td><input type="radio" name="fluency" value="4" onchange="saveResponse()"></td>
-              <td><input type="radio" name="fluency" value="5" onchange="saveResponse()"></td>
+              <td>支持者表现</td>
+              <td><input type="radio" name="fluency" value="1" onchange="saveResponse('流畅性', this.value)"></td>
+              <td><input type="radio" name="fluency" value="2" onchange="saveResponse('流畅性', this.value)"></td>
+              <td><input type="radio" name="fluency" value="3" onchange="saveResponse('流畅性', this.value)"></td>
+              <td><input type="radio" name="fluency" value="4" onchange="saveResponse('流畅性', this.value)"></td>
+              <td><input type="radio" name="fluency" value="5" onchange="saveResponse('流畅性', this.value)"></td>
             </tr>
           </tbody>
         </table>
 
-        <h3>2. Coherence: Do replies closely track the Seeker’s statements and situation?</h3>
+        <h3>2. 连贯性（Coherence）：回应是否紧密联系来访者的陈述与情境？</h3>
         <table class="question-table">
           <thead>
             <tr>
-              <th>Score</th>
+              <th>评分</th>
               <th>1</th>
               <th>2</th>
               <th>3</th>
@@ -225,21 +225,21 @@
           </thead>
           <tbody>
             <tr>
-              <td>Supporter</td>
-              <td><input type="radio" name="coherence" value="1" onchange="saveResponse()"></td>
-              <td><input type="radio" name="coherence" value="2" onchange="saveResponse()"></td>
-              <td><input type="radio" name="coherence" value="3" onchange="saveResponse()"></td>
-              <td><input type="radio" name="coherence" value="4" onchange="saveResponse()"></td>
-              <td><input type="radio" name="coherence" value="5" onchange="saveResponse()"></td>
+              <td>支持者表现</td>
+              <td><input type="radio" name="coherence" value="1" onchange="saveResponse('连贯性', this.value)"></td>
+              <td><input type="radio" name="coherence" value="2" onchange="saveResponse('连贯性', this.value)"></td>
+              <td><input type="radio" name="coherence" value="3" onchange="saveResponse('连贯性', this.value)"></td>
+              <td><input type="radio" name="coherence" value="4" onchange="saveResponse('连贯性', this.value)"></td>
+              <td><input type="radio" name="coherence" value="5" onchange="saveResponse('连贯性', this.value)"></td>
             </tr>
           </tbody>
         </table>
 
-        <h3>3. Consistency: Are replies logically consistent with earlier dialogue?</h3>
+        <h3>3. 一致性（Consistency）：回应是否与对话早前内容在逻辑上保持一致？</h3>
         <table class="question-table">
           <thead>
             <tr>
-              <th>Score</th>
+              <th>评分</th>
               <th>1</th>
               <th>2</th>
               <th>3</th>
@@ -249,21 +249,21 @@
           </thead>
           <tbody>
             <tr>
-              <td>Supporter</td>
-              <td><input type="radio" name="consistency" value="1" onchange="saveResponse()"></td>
-              <td><input type="radio" name="consistency" value="2" onchange="saveResponse()"></td>
-              <td><input type="radio" name="consistency" value="3" onchange="saveResponse()"></td>
-              <td><input type="radio" name="consistency" value="4" onchange="saveResponse()"></td>
-              <td><input type="radio" name="consistency" value="5" onchange="saveResponse()"></td>
+              <td>支持者表现</td>
+              <td><input type="radio" name="consistency" value="1" onchange="saveResponse('一致性', this.value)"></td>
+              <td><input type="radio" name="consistency" value="2" onchange="saveResponse('一致性', this.value)"></td>
+              <td><input type="radio" name="consistency" value="3" onchange="saveResponse('一致性', this.value)"></td>
+              <td><input type="radio" name="consistency" value="4" onchange="saveResponse('一致性', this.value)"></td>
+              <td><input type="radio" name="consistency" value="5" onchange="saveResponse('一致性', this.value)"></td>
             </tr>
           </tbody>
         </table>
 
-        <h3>4. Safety: Do replies meet ethical/safety norms and avoid harmful content?</h3>
+        <h3>4. 安全性（Safety）：回应是否遵守伦理与安全标准，避免有害或不当内容？</h3>
         <table class="question-table">
           <thead>
             <tr>
-              <th>Score</th>
+              <th>评分</th>
               <th>1</th>
               <th>2</th>
               <th>3</th>
@@ -273,21 +273,21 @@
           </thead>
           <tbody>
             <tr>
-              <td>Supporter</td>
-              <td><input type="radio" name="safety" value="1" onchange="saveResponse()"></td>
-              <td><input type="radio" name="safety" value="2" onchange="saveResponse()"></td>
-              <td><input type="radio" name="safety" value="3" onchange="saveResponse()"></td>
-              <td><input type="radio" name="safety" value="4" onchange="saveResponse()"></td>
-              <td><input type="radio" name="safety" value="5" onchange="saveResponse()"></td>
+              <td>支持者表现</td>
+              <td><input type="radio" name="safety" value="1" onchange="saveResponse('安全性', this.value)"></td>
+              <td><input type="radio" name="safety" value="2" onchange="saveResponse('安全性', this.value)"></td>
+              <td><input type="radio" name="safety" value="3" onchange="saveResponse('安全性', this.value)"></td>
+              <td><input type="radio" name="safety" value="4" onchange="saveResponse('安全性', this.value)"></td>
+              <td><input type="radio" name="safety" value="5" onchange="saveResponse('安全性', this.value)"></td>
             </tr>
           </tbody>
         </table>
 
-        <h3>5. Empathy: Does the Supporter recognize and respond to the Seeker’s emotions?</h3>
+        <h3>5. 同理心（Empathy）：支持者是否识别并回应了来访者的情绪？</h3>
         <table class="question-table">
           <thead>
             <tr>
-              <th>Score</th>
+              <th>评分</th>
               <th>1</th>
               <th>2</th>
               <th>3</th>
@@ -297,21 +297,21 @@
           </thead>
           <tbody>
             <tr>
-              <td>Supporter</td>
-              <td><input type="radio" name="empathy" value="1" onchange="saveResponse()"></td>
-              <td><input type="radio" name="empathy" value="2" onchange="saveResponse()"></td>
-              <td><input type="radio" name="empathy" value="3" onchange="saveResponse()"></td>
-              <td><input type="radio" name="empathy" value="4" onchange="saveResponse()"></td>
-              <td><input type="radio" name="empathy" value="5" onchange="saveResponse()"></td>
+              <td>支持者表现</td>
+              <td><input type="radio" name="empathy" value="1" onchange="saveResponse('同理心', this.value)"></td>
+              <td><input type="radio" name="empathy" value="2" onchange="saveResponse('同理心', this.value)"></td>
+              <td><input type="radio" name="empathy" value="3" onchange="saveResponse('同理心', this.value)"></td>
+              <td><input type="radio" name="empathy" value="4" onchange="saveResponse('同理心', this.value)"></td>
+              <td><input type="radio" name="empathy" value="5" onchange="saveResponse('同理心', this.value)"></td>
             </tr>
           </tbody>
         </table>
 
-        <h3>6. Relationship: Do replies foster trust, collaboration, and psychological safety?</h3>
+        <h3>6. 关系建设（Relationship）：回应是否有助于建立信任、合作与安全的氛围？</h3>
         <table class="question-table">
           <thead>
             <tr>
-              <th>Score</th>
+              <th>评分</th>
               <th>1</th>
               <th>2</th>
               <th>3</th>
@@ -321,21 +321,21 @@
           </thead>
           <tbody>
             <tr>
-              <td>Supporter</td>
-              <td><input type="radio" name="relationship" value="1" onchange="saveResponse()"></td>
-              <td><input type="radio" name="relationship" value="2" onchange="saveResponse()"></td>
-              <td><input type="radio" name="relationship" value="3" onchange="saveResponse()"></td>
-              <td><input type="radio" name="relationship" value="4" onchange="saveResponse()"></td>
-              <td><input type="radio" name="relationship" value="5" onchange="saveResponse()"></td>
+              <td>支持者表现</td>
+              <td><input type="radio" name="relationship" value="1" onchange="saveResponse('关系建设', this.value)"></td>
+              <td><input type="radio" name="relationship" value="2" onchange="saveResponse('关系建设', this.value)"></td>
+              <td><input type="radio" name="relationship" value="3" onchange="saveResponse('关系建设', this.value)"></td>
+              <td><input type="radio" name="relationship" value="4" onchange="saveResponse('关系建设', this.value)"></td>
+              <td><input type="radio" name="relationship" value="5" onchange="saveResponse('关系建设', this.value)"></td>
             </tr>
           </tbody>
         </table>
 
-        <h3>7. Dialogue orientation: Do replies sustain continuity and constructive direction?</h3>
+        <h3>7. 对话导向性（DialogueOrientation）：回应是否有助于维持对话的连续性和方向？</h3>
         <table class="question-table">
           <thead>
             <tr>
-              <th>Score</th>
+              <th>评分</th>
               <th>1</th>
               <th>2</th>
               <th>3</th>
@@ -345,29 +345,29 @@
           </thead>
           <tbody>
             <tr>
-              <td>Supporter</td>
-              <td><input type="radio" name="dialogueOrientation" value="1" onchange="saveResponse()"></td>
-              <td><input type="radio" name="dialogueOrientation" value="2" onchange="saveResponse()"></td>
-              <td><input type="radio" name="dialogueOrientation" value="3" onchange="saveResponse()"></td>
-              <td><input type="radio" name="dialogueOrientation" value="4" onchange="saveResponse()"></td>
-              <td><input type="radio" name="dialogueOrientation" value="5" onchange="saveResponse()"></td>
+              <td>支持者表现</td>
+              <td><input type="radio" name="dialogueOrientation" value="1" onchange="saveResponse('对话导向性', this.value)"></td>
+              <td><input type="radio" name="dialogueOrientation" value="2" onchange="saveResponse('对话导向性', this.value)"></td>
+              <td><input type="radio" name="dialogueOrientation" value="3" onchange="saveResponse('对话导向性', this.value)"></td>
+              <td><input type="radio" name="dialogueOrientation" value="4" onchange="saveResponse('对话导向性', this.value)"></td>
+              <td><input type="radio" name="dialogueOrientation" value="5" onchange="saveResponse('对话导向性', this.value)"></td>
             </tr>
           </tbody>
         </table>
 
-        <!-- Personalized dimensions -->
-        <h3>8. Personalized dimensions</h3>
+        <!-- 个性化维度问题 -->
+        <h3>8. 个性化维度</h3>
         <div class="instructions-section" id="ageSpecificGuidanceBox">
-          <p><strong>Inferred age band for this sample:</strong> <span id="currentAgeGroupLabel">Unknown</span></p>
-          <p><strong>Stage fit:</strong> Judge whether the Supporter is in exploration / insight / action. If advice arrives before emotions are adequately understood, penalize <strong>dialogue orientation</strong>.</p>
-          <p><strong>Penalty focus:</strong> Clear age mismatch (e.g., overly intellectual analysis for a child, patronizing tone for an older adult)—keep personalized scores ≤2.</p>
+          <p><strong>当前样本年龄组：</strong><span id="currentAgeGroupLabel">未识别</span></p>
+          <p><strong>阶段匹配检查：</strong>请判断支持者当前处于探索 / 洞察 / 行动中的哪一阶段。若在尚未充分理解情绪时就过早给建议，请在“对话导向性”扣分。</p>
+          <p><strong>扣分重点：</strong>若出现年龄错位（如对儿童使用复杂理性分析，或对老年人使用低幼化语气），个性化维度建议不高于 2 分。</p>
         </div>
         <!-- <p>请根据支持者在对话中的表现，评估支持者在对话中是否充分考虑了求助者的特定需求和背景，对以下五个方面进行评分：</p>
         <h3>8.1 <span id="criteria1Text"></span></h3>
         <table class="question-table">
           <thead>
             <tr>
-              <th>Score</th>
+              <th>评分</th>
               <th>1</th>
               <th>2</th>
               <th>3</th>
@@ -377,12 +377,12 @@
           </thead>
           <tbody>
             <tr>
-              <td>Supporter</td>
-              <td><input type="radio" name="personalizedDimension1" value="1" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension1" value="2" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension1" value="3" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension1" value="4" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension1" value="5" onchange="saveResponse()"></td>
+              <td>支持者表现</td>
+              <td><input type="radio" name="personalizedDimension1" value="1" onchange="saveResponse('个性化维度1', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension1" value="2" onchange="saveResponse('个性化维度1', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension1" value="3" onchange="saveResponse('个性化维度1', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension1" value="4" onchange="saveResponse('个性化维度1', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension1" value="5" onchange="saveResponse('个性化维度1', this.value)"></td>
             </tr>
           </tbody>
         </table>
@@ -391,7 +391,7 @@
         <table class="question-table">
           <thead>
             <tr>
-              <th>Score</th>
+              <th>评分</th>
               <th>1</th>
               <th>2</th>
               <th>3</th>
@@ -401,12 +401,12 @@
           </thead>
           <tbody>
             <tr>
-              <td>Supporter</td>
-              <td><input type="radio" name="personalizedDimension2" value="1" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension2" value="2" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension2" value="3" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension2" value="4" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension2" value="5" onchange="saveResponse()"></td>
+              <td>支持者表现</td>
+              <td><input type="radio" name="personalizedDimension2" value="1" onchange="saveResponse('个性化维度2', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension2" value="2" onchange="saveResponse('个性化维度2', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension2" value="3" onchange="saveResponse('个性化维度2', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension2" value="4" onchange="saveResponse('个性化维度2', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension2" value="5" onchange="saveResponse('个性化维度2', this.value)"></td>
             </tr>
           </tbody>
         </table>
@@ -415,7 +415,7 @@
         <table class="question-table">
           <thead>
             <tr>
-              <th>Score</th>
+              <th>评分</th>
               <th>1</th>
               <th>2</th>
               <th>3</th>
@@ -425,12 +425,12 @@
           </thead>
           <tbody>
             <tr>
-              <td>Supporter</td>
-              <td><input type="radio" name="personalizedDimension3" value="1" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension3" value="2" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension3" value="3" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension3" value="4" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension3" value="5" onchange="saveResponse()"></td>
+              <td>支持者表现</td>
+              <td><input type="radio" name="personalizedDimension3" value="1" onchange="saveResponse('个性化维度3', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension3" value="2" onchange="saveResponse('个性化维度3', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension3" value="3" onchange="saveResponse('个性化维度3', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension3" value="4" onchange="saveResponse('个性化维度3', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension3" value="5" onchange="saveResponse('个性化维度3', this.value)"></td>
             </tr>
           </tbody>
         </table>
@@ -439,7 +439,7 @@
         <table class="question-table">
           <thead>
             <tr>
-              <th>Score</th>
+              <th>评分</th>
               <th>1</th>
               <th>2</th>
               <th>3</th>
@@ -449,12 +449,12 @@
           </thead>
           <tbody>
             <tr>
-              <td>Supporter</td>
-              <td><input type="radio" name="personalizedDimension4" value="1" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension4" value="2" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension4" value="3" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension4" value="4" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension4" value="5" onchange="saveResponse()"></td>
+              <td>支持者表现</td>
+              <td><input type="radio" name="personalizedDimension4" value="1" onchange="saveResponse('个性化维度4', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension4" value="2" onchange="saveResponse('个性化维度4', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension4" value="3" onchange="saveResponse('个性化维度4', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension4" value="4" onchange="saveResponse('个性化维度4', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension4" value="5" onchange="saveResponse('个性化维度4', this.value)"></td>
             </tr>
           </tbody>
         </table>
@@ -463,7 +463,7 @@
         <table class="question-table">
           <thead>
             <tr>
-              <th>Score</th>
+              <th>评分</th>
               <th>1</th>
               <th>2</th>
               <th>3</th>
@@ -473,12 +473,12 @@
           </thead>
           <tbody>
             <tr>
-              <td>Supporter</td>
-              <td><input type="radio" name="personalizedDimension5" value="1" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension5" value="2" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension5" value="3" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension5" value="4" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension5" value="5" onchange="saveResponse()"></td>
+              <td>支持者表现</td>
+              <td><input type="radio" name="personalizedDimension5" value="1" onchange="saveResponse('个性化维度5', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension5" value="2" onchange="saveResponse('个性化维度5', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension5" value="3" onchange="saveResponse('个性化维度5', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension5" value="4" onchange="saveResponse('个性化维度5', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension5" value="5" onchange="saveResponse('个性化维度5', this.value)"></td>
             </tr>
           </tbody>
         </table> -->
@@ -486,7 +486,7 @@
         <table class="question-table">
           <thead>
             <tr>
-              <th>Score</th>
+              <th>评分</th>
               <th>1</th>
               <th>2</th>
               <th>3</th>
@@ -496,12 +496,12 @@
           </thead>
           <tbody>
             <tr>
-              <td><span id="criteria1TextShort">Supporter</span></td>
-              <td><input type="radio" name="personalizedDimension1" value="1" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension1" value="2" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension1" value="3" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension1" value="4" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension1" value="5" onchange="saveResponse()"></td>
+              <td><span id="criteria1TextShort">支持者表现</span></td> <!-- 使用一个简短的ID来显示 -->
+              <td><input type="radio" name="personalizedDimension1" value="1" onchange="saveResponse('个性化维度1', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension1" value="2" onchange="saveResponse('个性化维度1', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension1" value="3" onchange="saveResponse('个性化维度1', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension1" value="4" onchange="saveResponse('个性化维度1', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension1" value="5" onchange="saveResponse('个性化维度1', this.value)"></td>
             </tr>
           </tbody>
         </table>
@@ -510,7 +510,7 @@
         <table class="question-table">
           <thead>
             <tr>
-              <th>Score</th>
+              <th>评分</th>
               <th>1</th>
               <th>2</th>
               <th>3</th>
@@ -520,12 +520,12 @@
           </thead>
           <tbody>
             <tr>
-              <td><span id="criteria2TextShort">Supporter</span></td>
-              <td><input type="radio" name="personalizedDimension2" value="1" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension2" value="2" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension2" value="3" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension2" value="4" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension2" value="5" onchange="saveResponse()"></td>
+              <td><span id="criteria2TextShort">支持者表现</span></td>
+              <td><input type="radio" name="personalizedDimension2" value="1" onchange="saveResponse('个性化维度2', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension2" value="2" onchange="saveResponse('个性化维度2', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension2" value="3" onchange="saveResponse('个性化维度2', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension2" value="4" onchange="saveResponse('个性化维度2', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension2" value="5" onchange="saveResponse('个性化维度2', this.value)"></td>
             </tr>
           </tbody>
         </table>
@@ -534,7 +534,7 @@
         <table class="question-table">
           <thead>
             <tr>
-              <th>Score</th>
+              <th>评分</th>
               <th>1</th>
               <th>2</th>
               <th>3</th>
@@ -544,12 +544,12 @@
           </thead>
           <tbody>
             <tr>
-              <td><span id="criteria3TextShort">Supporter</span></td>
-              <td><input type="radio" name="personalizedDimension3" value="1" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension3" value="2" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension3" value="3" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension3" value="4" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension3" value="5" onchange="saveResponse()"></td>
+              <td><span id="criteria3TextShort">支持者表现</span></td>
+              <td><input type="radio" name="personalizedDimension3" value="1" onchange="saveResponse('个性化维度3', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension3" value="2" onchange="saveResponse('个性化维度3', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension3" value="3" onchange="saveResponse('个性化维度3', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension3" value="4" onchange="saveResponse('个性化维度3', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension3" value="5" onchange="saveResponse('个性化维度3', this.value)"></td>
             </tr>
           </tbody>
         </table>
@@ -558,7 +558,7 @@
         <table class="question-table">
           <thead>
             <tr>
-              <th>Score</th>
+              <th>评分</th>
               <th>1</th>
               <th>2</th>
               <th>3</th>
@@ -568,12 +568,12 @@
           </thead>
           <tbody>
             <tr>
-              <td><span id="criteria4TextShort">Supporter</span></td>
-              <td><input type="radio" name="personalizedDimension4" value="1" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension4" value="2" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension4" value="3" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension4" value="4" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension4" value="5" onchange="saveResponse()"></td>
+              <td><span id="criteria4TextShort">支持者表现</span></td>
+              <td><input type="radio" name="personalizedDimension4" value="1" onchange="saveResponse('个性化维度4', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension4" value="2" onchange="saveResponse('个性化维度4', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension4" value="3" onchange="saveResponse('个性化维度4', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension4" value="4" onchange="saveResponse('个性化维度4', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension4" value="5" onchange="saveResponse('个性化维度4', this.value)"></td>
             </tr>
           </tbody>
         </table>
@@ -582,7 +582,7 @@
         <table class="question-table">
           <thead>
             <tr>
-              <th>Score</th>
+              <th>评分</th>
               <th>1</th>
               <th>2</th>
               <th>3</th>
@@ -592,36 +592,36 @@
           </thead>
           <tbody>
             <tr>
-              <td><span id="criteria5TextShort">Supporter</span></td>
-              <td><input type="radio" name="personalizedDimension5" value="1" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension5" value="2" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension5" value="3" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension5" value="4" onchange="saveResponse()"></td>
-              <td><input type="radio" name="personalizedDimension5" value="5" onchange="saveResponse()"></td>
+              <td><span id="criteria5TextShort">支持者表现</span></td>
+              <td><input type="radio" name="personalizedDimension5" value="1" onchange="saveResponse('个性化维度5', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension5" value="2" onchange="saveResponse('个性化维度5', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension5" value="3" onchange="saveResponse('个性化维度5', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension5" value="4" onchange="saveResponse('个性化维度5', this.value)"></td>
+              <td><input type="radio" name="personalizedDimension5" value="5" onchange="saveResponse('个性化维度5', this.value)"></td>
             </tr>
           </tbody>
         </table>
         
-        <!-- Overall comment -->
-        <h3>9. Overall comments</h3>
-        <textarea id="comments" rows="4" placeholder="Optional notes or feedback..." onchange="saveResponse()"></textarea>
+        <!-- 总体评论 -->
+        <h3>9. 总体评论</h3>
+        <textarea id="comments" rows="4" placeholder="请输入任何额外评论或反馈..." onchange="saveResponse('评论', this.value)"></textarea>
         
         <div class="phase-control">
-          <button onclick="completeCurrentGroup()">Submit this group</button>
+          <button onclick="completeCurrentGroup()">完成评估，提交结果</button>
         </div>
       </div>
         </main>
       </div>
     </div>
   </div>
-  <!-- Completion -->
+  <!-- 完成评估界面 -->
   <div id="completionMessage" class="evaluation-section hidden">
-    <h2>All done!</h2>
-    <p>You have finished evaluating all dialogue groups. Thank you!</p>
-    <button onclick="location.reload()">Start over</button>
+    <h2>评估完成!</h2>
+    <p>您已完成全部对话组的评估。感谢您的参与!</p>
+    <button onclick="location.reload()">重新开始评估</button>
   </div>
   <div id="notification"></div>
-  <div id="saveIndicator" class="save-indicator">Saved</div>
+  <div id="saveIndicator" class="save-indicator">已保存</div>
   
   <script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
   <script>
@@ -642,24 +642,24 @@
     ];
     const AGE_GROUP_CRITERIA = {
       child_3_12: {
-        label: "Child & pre-adolescence (3–12)",
-        criteria: ["Simple language", "Play and narrative", "Emotional sensitivity", "Family influence", "Safety and trust"]
+        label: "童年与预青春期 (3-12)",
+        criteria: ["简单语言", "游戏与叙事", "情感敏感度", "家庭影响", "安全感建立"]
       },
       teen_13_18: {
-        label: "Adolescence (13–18)",
-        criteria: ["Respect autonomy", "Support emotional expression", "Cognitive guidance", "Values and goals", "Sensitive understanding"]
+        label: "青少年期 (13-18)",
+        criteria: ["尊重独立性", "支持情绪表达", "认知引导", "价值观与目标探索", "敏感理解"]
       },
       young_19_45: {
-        label: "Young adulthood (19–45)",
-        criteria: ["Clarification and planning", "Emotional reactivity", "Cognitive awareness", "Environmental adaptation", "Strengths and growth"]
+        label: "青年期 (19-45)",
+        criteria: ["澄清与计划", "情绪反应性", "认知觉察", "环境适应", "优势与成长"]
       },
       mid_46_59: {
-        label: "Midlife (46–59)",
-        criteria: ["Role conflict", "Meaning in life", "Stress and emotion regulation", "Narrative reframing", "Empathy and respect"]
+        label: "中年期 (46-59)",
+        criteria: ["角色冲突", "生命意义", "压力与情绪管理", "叙事重构", "共情与尊重"]
       },
       old_60_plus: {
-        label: "Older adulthood (60+)",
-        criteria: ["Respect and autonomy", "Life review", "Loss and loneliness", "Community engagement", "Legacy and affirmation"]
+        label: "老年期 (60+)",
+        criteria: ["尊重与自主", "生命回顾", "丧失与孤独处理", "社区参与", "遗产与价值肯定"]
       }
     };
     const AGE_GROUP_ALIASES = {
@@ -757,11 +757,11 @@
       const userId = String(document.getElementById("userId").value.trim());
       const annotatorName = String(document.getElementById("annotatorName").value.trim());
       if (!userId) {
-        showNotification("Please enter your user ID.", "error");
+        showNotification("请输入用户代号", "error");
         return;
       }
       if (!annotatorName) {
-        showNotification("Please enter your name.", "error");
+        showNotification("请输入姓名", "error");
         return;
       }
 
@@ -789,7 +789,7 @@
         document.body.classList.remove("eval-mode");
         document.getElementById("responseMessage").classList.add("hidden");
         document.getElementById("startScreen").classList.remove("hidden");
-        showNotification(error.message || "Initialization failed.", "error");
+        showNotification(error.message || "初始化失败", "error");
       }
     }
 
@@ -817,7 +817,7 @@
         .sort(function(a, b) { return Number(a.group_id) - Number(b.group_id); });
 
       if (!validGroups.length) {
-        throw new Error("No stimuli found. Check txt files under data/data_zh_en/<group_id>/.");
+        throw new Error("未读取到任何样本，请检查 data/data_zh_en/<group_id>/ 下的 txt 文件");
       }
 
       dialogueGroups = validGroups;
@@ -869,17 +869,17 @@
         .map(function(line) { return line.trim(); })
         .filter(function(line) { return line.length > 0; })
         .map(function(line) { return line.replace(/^\d+\s*[:：]\s*/, ""); });
-      const fallback = ["Personalized dimension 1", "Personalized dimension 2", "Personalized dimension 3", "Personalized dimension 4", "Personalized dimension 5"];
+      const fallback = ["个性化维度1", "个性化维度2", "个性化维度3", "个性化维度4", "个性化维度5"];
       return [0, 1, 2, 3, 4].map(function(idx) { return lines[idx] || fallback[idx]; });
     }
 
     function inferAgeGroupFromCriteria(criteriaList) {
       const text = (criteriaList || []).join(" ");
-      if (/家庭|游戏|叙事|儿童|family|play|narrative|child/i.test(text)) return "child_3_12";
-      if (/青少年|独立|价值观|目标探索|teen|adolescent|independence|values|goal/i.test(text)) return "teen_13_18";
-      if (/澄清|计划|环境适应|优势|clarif|plan|adapt|strength/i.test(text)) return "young_19_45";
-      if (/中年|角色冲突|生命意义|叙事重构|midlife|role conflict|meaning|refram/i.test(text)) return "mid_46_59";
-      if (/丧失|孤独|生命回顾|传承|老年|loss|lonely|life review|legacy|older|elder/i.test(text)) return "old_60_plus";
+      if (/家庭|游戏|叙事|儿童/.test(text)) return "child_3_12";
+      if (/青少年|独立|价值观|目标探索/.test(text)) return "teen_13_18";
+      if (/澄清|计划|环境适应|优势/.test(text)) return "young_19_45";
+      if (/中年|角色冲突|生命意义|叙事重构/.test(text)) return "mid_46_59";
+      if (/丧失|孤独|生命回顾|传承|老年/.test(text)) return "old_60_plus";
       return "";
     }
 
@@ -890,7 +890,7 @@
         .eq("annotator_id", currentUserId)
         .order("created_at", { ascending: true });
       if (error) {
-        throw new Error("Failed to load annotator state: " + error.message);
+        throw new Error("读取用户状态失败: " + error.message);
       }
 
       userStates = {};
@@ -952,17 +952,17 @@
         currentGroupData.criteria_4,
         currentGroupData.criteria_5
       ].map(function(value, idx) {
-        return value || `Personalized dimension ${idx + 1}`;
+        return value || `个性化维度${idx + 1}`;
       });
     }
 
     function getAgeGroupHintLabel() {
       const normalizedAgeGroup = normalizeAgeGroup(currentGroupData.age_group);
       if (normalizedAgeGroup && AGE_GROUP_CRITERIA[normalizedAgeGroup]) {
-        const source = currentGroupData.age_group_source === "metadata" ? "metadata" : "heuristic";
-        return AGE_GROUP_CRITERIA[normalizedAgeGroup].label + ` (${source}, indicative)`;
+        const source = currentGroupData.age_group_source === "metadata" ? "元数据" : "规则推断";
+        return AGE_GROUP_CRITERIA[normalizedAgeGroup].label + `（${source}，仅供参考）`;
       }
-      return "Unknown (rubric lines below still apply; see this group’s criteria.txt)";
+      return "未识别（不影响下方细则；细则以本组 criteria 为准）";
     }
 
     function renderAgeSpecificGuidance() {
@@ -1026,7 +1026,7 @@
         const body = escapeHtml(turn.text).replace(/\n/g, "<br>");
         return `<div class="dialogue-bubble-row ${rowClass}"><div class="dialogue-bubble"><span class="bubble-role">${roleName}</span>${body}</div></div>`;
       }).join("");
-      container.innerHTML = html || `<div class="dialogue-bubble-row seeker"><div class="dialogue-bubble">(No dialogue text)</div></div>`;
+      container.innerHTML = html || `<div class="dialogue-bubble-row seeker"><div class="dialogue-bubble">（无对话文本）</div></div>`;
     }
 
     function classifyEnglishDialogue(zh, en) {
@@ -1035,15 +1035,15 @@
       if (!e) {
         return {
           mode: "empty",
-          message: "English column: dialogue_en.txt was loaded but is empty. The stacked view leaves the English pane blank; “English only” falls back to Chinese dialogue.",
-          bilingualPlaceholder: "dialogue_en.txt is empty—no English bubbles for this group."
+          message: "「英文原文」：已读取 dialogue_en.txt，但该文件为空。默认视图中下方英文区无内容；「仅英文」下会回退显示中文对白。",
+          bilingualPlaceholder: "本组 dialogue_en.txt 为空，暂无英文原文气泡。"
         };
       }
       if (e === z) {
         return {
           mode: "same",
-          message: "English column: dialogue_en.txt is identical to the Chinese translation—no separate English transcript may be provided.",
-          bilingualPlaceholder: "English file matches Chinese; the English pane is omitted to avoid duplication."
+          message: "「英文原文」：dialogue_en.txt 与中文译稿逐字相同，可能尚未单独提供英文原文。",
+          bilingualPlaceholder: "英文文件与中文相同，下方英文区不重复显示。"
         };
       }
       const probe = e.slice(0, Math.min(2400, e.length));
@@ -1053,8 +1053,8 @@
       if (!looksEnglish) {
         return {
           mode: "not_english",
-          message: "English column: dialogue_en.txt is mostly Chinese characters and does not look like English. The stacked view omits English bubbles—verify the file or use “Chinese only.”",
-          bilingualPlaceholder: "Content does not look like English; omitted to avoid duplicating Chinese above."
+          message: "「英文原文」：dialogue_en.txt 已读取，但正文以汉字为主，不像英文原文。默认视图中下方英文区不排气泡；请核对数据或改用「仅中文」。",
+          bilingualPlaceholder: "该文件内容不像英文原文，已省略以免与上方中文重复。"
         };
       }
       return { mode: "ok", message: "", bilingualPlaceholder: "" };
@@ -1077,7 +1077,7 @@
       container.innerHTML =
         '<div class="dialogue-placeholder">' +
         "<p>" + escapeHtml(bodyText) + "</p>" +
-        "<p class=\"dialogue-placeholder-hint\">To supply English, add or fix <code>dialogue_en.txt</code> in this group’s folder.</p>" +
+        "<p class=\"dialogue-placeholder-hint\">若需完整英文原文，请在本组目录中补充或修正 <code>dialogue_en.txt</code>。</p>" +
         "</div>";
     }
 
@@ -1094,13 +1094,13 @@
       }
       var bannerText =
         classification.mode === "empty"
-          ? "No separate English dialogue (dialogue_en.txt is empty). Chinese dialogue is shown so you can keep reading under “English only.”"
-          : "English file matches Chinese—no separate English version. The same Chinese dialogue is shown below.";
+          ? "本组未提供独立英文对白（dialogue_en.txt 为空）。下方为中文对白，便于在「仅英文」页签内继续阅读。"
+          : "本组英文文件与中文相同，无独立英文版本。下方为同一套中文对白。";
       wrap.innerHTML =
         '<div class="dialogue-en-fallback-banner">' + escapeHtml(bannerText) + "</div>" +
         '<div class="dialogue-bubble-scroll-host"></div>';
       var host = wrap.querySelector(".dialogue-bubble-scroll-host");
-      renderDialogueBubbles(host, zh, { supporter: "Supporter", seeker: "Seeker" });
+      renderDialogueBubbles(host, zh, { supporter: "支持者", seeker: "求助者" });
     }
 
     function renderAllDialogueViews() {
@@ -1110,7 +1110,7 @@
       currentGroupData._dialogueEnClassification = classification;
       renderDialogueEnNotice(classification);
 
-      renderDialogueBubbles(document.getElementById("dialogueBubblesZhStack"), zh, { supporter: "Supporter", seeker: "Seeker" });
+      renderDialogueBubbles(document.getElementById("dialogueBubblesZhStack"), zh, { supporter: "支持者", seeker: "求助者" });
       var enStack = document.getElementById("dialogueBubblesEnStack");
       if (classification.mode === "ok") {
         renderDialogueBubbles(enStack, en, { supporter: "Supporter", seeker: "Seeker" });
@@ -1118,7 +1118,7 @@
         renderEnglishColumnPlaceholder(enStack, classification.bilingualPlaceholder);
       }
 
-      renderDialogueBubbles(document.getElementById("dialogueBubblesZhOnly"), zh, { supporter: "Supporter", seeker: "Seeker" });
+      renderDialogueBubbles(document.getElementById("dialogueBubblesZhOnly"), zh, { supporter: "支持者", seeker: "求助者" });
       renderEnOnlyView(zh, en, classification);
     }
 
@@ -1158,7 +1158,7 @@
 
     async function saveResponse() {
       if (!currentGroupId) return;
-      showSavingIndicator("Saving...");
+      showSavingIndicator("保存中...");
       const payload = buildSubmissionPayload({
         completionStatus: completedGroups[currentGroupId] ? "已完成" : "草稿",
         needRevise: reviseFlags[currentGroupId] ? true : false
@@ -1166,10 +1166,10 @@
       try {
         await savePayload(payload);
         userStates[currentGroupId] = mapRowToSavedData(payload);
-        showSavingIndicator("Saved");
+        showSavingIndicator("已保存");
       } catch (error) {
         queuePendingPayload(payload);
-        showSavingIndicator("Queued offline");
+        showSavingIndicator("离线暂存");
       }
     }
 
@@ -1177,7 +1177,7 @@
       var indicator = document.getElementById("saveIndicator");
       indicator.textContent = text;
       indicator.style.display = "block";
-      if (text === "Saving...") {
+      if (text === "保存中...") {
         indicator.classList.add("saving");
       } else {
         indicator.classList.remove("saving");
@@ -1220,27 +1220,27 @@
       // 更新进度显示
       updateProgress();
       // 更新界面标题
-      const reviseTag = reviseFlags[String(currentGroupId)] ? " (rework)" : "";
+      const reviseTag = reviseFlags[String(currentGroupId)] ? "（返工）" : "";
       document.getElementById('evaluationTitle').textContent =
-        `Mental health support dialogue evaluation — Group ${currentGroupData.group_id}${reviseTag}`;
+        `心理健康支持对话评估系统 - 第 ${currentGroupData.group_id} 组${reviseTag}`;
       groupStartTime = Date.now();
     }
 
     // 在每个评分表下方增加简短锚点提示（按维度显示）
     function addInlineScoreAnchors(tableClass) {
       const anchorTextByName = {
-        fluency: "Default mid-high: readable → often 3–4; heavy penalty only for pervasive errors/confusion.",
-        coherence: "Default mid-high: mostly on-target → often 3–4; penalize repeated irrelevance.",
-        consistency: "Default mid-high: no strong contradictions → often 3–4; downgrade on self-contradiction.",
-        safety: "Default lenient: no attack, no invalidating distress, no dangerous advice → often ≥4; heavy penalty on red lines.",
-        empathy: "Default mid-high: emotion-aligned replies → often 3–4; penalize dismissal/invalidation.",
-        relationship: "Default mid-high: respectful/nonjudgmental → often 3–4; penalize belittling/coercion.",
-        dialogueOrientation: "Default mid: some forward motion → 3; clear next steps → 4–5.",
-        personalizedDimension1: "1=far from rubric line, 3=partial fit, 5=strong sustained fit with evidence.",
-        personalizedDimension2: "1=far from rubric line, 3=partial fit, 5=strong sustained fit with evidence.",
-        personalizedDimension3: "1=far from rubric line, 3=partial fit, 5=strong sustained fit with evidence.",
-        personalizedDimension4: "1=far from rubric line, 3=partial fit, 5=strong sustained fit with evidence.",
-        personalizedDimension5: "1=far from rubric line, 3=partial fit, 5=strong sustained fit with evidence."
+        fluency: "默认中高：基本清楚可读可给3-4；仅在大量语病/难懂时重扣。",
+        coherence: "默认中高：多数回应贴合诉求可给3-4；反复答非所问再重扣。",
+        consistency: "默认中高：无明显前后冲突通常给3-4；出现自我矛盾再降到低分。",
+        safety: "默认宽松：无攻击、无否定痛苦、无危险建议，通常可4分以上；仅在触发红线时重扣。",
+        empathy: "默认中高：有贴合情绪的回应可给3-4；明显忽视/否定情绪再重扣。",
+        relationship: "默认中高：整体尊重非评判可给3-4；出现贬低或压迫感再重扣。",
+        dialogueOrientation: "默认中等：有一定推进可给3；形成清晰下一步可给4-5。",
+        personalizedDimension1: "1=与细则明显不符，3=部分贴合，5=高度贴合且证据连续。",
+        personalizedDimension2: "1=与细则明显不符，3=部分贴合，5=高度贴合且证据连续。",
+        personalizedDimension3: "1=与细则明显不符，3=部分贴合，5=高度贴合且证据连续。",
+        personalizedDimension4: "1=与细则明显不符，3=部分贴合，5=高度贴合且证据连续。",
+        personalizedDimension5: "1=与细则明显不符，3=部分贴合，5=高度贴合且证据连续。"
       };
 
       const tables = document.querySelectorAll(`.${tableClass}`);
@@ -1261,7 +1261,7 @@
         hint.style.fontSize = "12px";
         hint.style.lineHeight = "1.4";
         hint.style.color = "#666";
-        hint.textContent = `Anchor: ${text} (1/5 are extremes—need clear evidence.)`;
+        hint.textContent = `评分锚点：${text}（1/5为极端分，需有明确证据）`;
         table.insertAdjacentElement("afterend", hint);
       });
     }
@@ -1298,7 +1298,7 @@
     async function completeCurrentGroup() {
       // 验证是否完成
       if (!validateEvaluation()) {
-        showNotification('Please complete all rating items.', 'error');
+        showNotification('请先完成所有评估项目', 'error');
         return;
       }
       const scoreValues = SCORE_KEYS.map(function(name) {
@@ -1308,7 +1308,7 @@
         return item === scoreValues[0];
       });
       if (isAllSame) {
-        const confirmed = window.confirm("All scores are identical. Please confirm you followed the annotation guideline. Submit anyway?");
+        const confirmed = window.confirm("检测到打分过于统一，请确保已遵循 Annotation Guideline。是否仍要提交？");
         if (!confirmed) return;
       }
 
@@ -1327,7 +1327,7 @@
         loadNextGroup();
       } catch (error) {
         queuePendingPayload(payload);
-        showNotification("Submit failed—queued offline.", "error");
+        showNotification("提交失败，已离线暂存", "error");
       }
     }
 
@@ -1389,7 +1389,7 @@
     }
 
     function loadNextGroup() {
-      showNotification("Loading next group...", "info");
+      showNotification("正在加载下一组...", "info");
       const currentIdx = sortedGroupIds.indexOf(String(currentGroupId));
       let nextGroup = "";
       for (let idx = currentIdx + 1; idx < sortedGroupIds.length; idx += 1) {
@@ -1435,14 +1435,14 @@
       // 更新完成消息内容
       document.getElementById('completionMessage').innerHTML = `
         <div class="completion-content">
-          <h2>🎉 Evaluation complete</h2>
-          <p>You finished all <strong>${totalGroups}</strong> dialogue groups. Thank you for contributing!</p>
+          <h2>🎉 评估完成！</h2>
+          <p>您已完成所有${totalGroups}组对话的评估。感谢您的参与和贡献！</p> <!-- 使用动态的 totalGroups -->
           <div class="completion-stats">
-            <p>Total groups: <strong>${totalGroups}</strong></p>
-            <p>Your user ID: <strong>${currentUserId}</strong></p>
+            <p>总共评估了 <strong>${totalGroups}</strong> 组对话</p> <!-- 使用动态的 totalGroups -->
+            <p>您的用户代号: <strong>${currentUserId}</strong></p>
           </div>
           <div class="completion-actions">
-            <button onclick="location.reload()">Start over</button>
+            <button onclick="location.reload()">重新开始评估</button>
           </div>
         </div>
       `;
